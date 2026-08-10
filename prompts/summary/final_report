@@ -1,0 +1,90 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<Formulated Task>
+{{ $json.formulated_task }}
+</Formulated Task>
+
+<IFR-2>
+{{ $json.ifr_2 }}
+</IFR-2>
+
+<Operative Zone>
+{{ $json.operative_zone }}
+</Operative Zone>
+
+<Operative Time>
+{{ $json.operative_time }}
+</Operative Time>
+
+<Physical Solution>
+{{ $json.physical_solution }}
+</Physical Solution>
+
+<Technical Realization>
+{{ $json.technical_realization }}
+</Technical Realization>
+
+<Solution Control>
+{{ $json.solution_control }}
+</Solution Control>
+
+<Solution Evaluation>
+{{ $json.solution_evaluation }}
+</Solution Evaluation>
+
+<Patent Novelty>
+{{ $json.patent_novelty }}
+</Patent Novelty>
+
+<Sub-tasks Identification>
+{{ $json.sub_tasks_identification }}
+</Sub-tasks Identification>
+
+<Instructions>
+You are writing the final report of an ARIZ-85-V analysis. Use only the data from the blocks above. Not all blocks may be filled; include in the report only those that have content. Write the entire report in Russian.
+
+Structure the report as follows:
+
+1. **Summary (Резюме)**  
+   Brief summary of the problem, the main solution idea, and the key conclusion (2–4 sentences). Base this on the <Problem> block above, the solution from the <Physical Solution>, <Technical Realization>, or <Solution Control> blocks above, and the conclusion from the <Solution Evaluation> or <Patent Novelty> blocks above if present.
+
+2. **Problem and Task (Постановка задачи)**  
+   Describe the initial problem and the formulated task. Use the <Problem> block above and the <Formulated Task> block above (Step 1.6). If <Formulated Task> is empty, describe only from <Problem>.
+
+3. **Ideal Final Result and Context (ИКР и контекст)**  
+   State the IFR-2 from the <IFR-2> block above (Step 3.5). If available, briefly mention the operative zone and operative time from the <Operative Zone> and <Operative Time> blocks above (Steps 2.1, 2.2).
+
+4. **Proposed Solution (Предлагаемое решение)**  
+   - Physical solution: summarize from the <Physical Solution> block above (Step 5.4).  
+   - Technical realization: summarize from the <Technical Realization> block above (Step 6.1).  
+   - Refined solution: if present, summarize from the <Solution Control> block above (Step 7.1) and/or <Solution Evaluation> block above (Step 7.2).  
+   Use only the blocks that have content; skip missing ones.
+
+5. **Verification and Novelty (Проверка и новизна)**  
+   - If <Solution Evaluation> has content: briefly state the verification result (IFR compliance, contradiction resolution, decision).  
+   - If <Patent Novelty> has content: state the novelty conclusion and recommendation (proceed/reformulate) from the <Patent Novelty> block above (Step 7.3).
+
+6. **Implementation Sub-tasks (Подзадачи внедрения)**  
+   If <Sub-tasks Identification> has content, list or summarize the main sub-tasks (inventive, engineering, organizational) from the <Sub-tasks Identification> block above (Step 7.4). Otherwise omit this section.
+
+7. **Breakthrough Ideas (Прорывные идеи — 5 вариантов)**  
+   Propose exactly 5 breakthrough ideas for solving the problem, in addition to the main solution from the report. Each idea must be:
+   - **Justified**: logically derived from the analysis above (IFR-2, operative zone/time, substance-field resources, contradictions). Explain in 1–2 sentences why the idea addresses the problem.
+   - **Budget-friendly and simple**: prefer solutions that use existing or cheap materials, simple design, minimal R&D, and proven technologies. Avoid solutions at the cutting edge of current scientific and technical capabilities—they are often unaffordable for most.
+   - **Concrete**: short title + brief mechanism (how it works) + why it is low-cost/simple.
+   Format for each idea: number (1–5), title, 2–3 sentences (обоснование + почему дёшево/просто). Ideas may develop or simplify the main solution, or offer alternative paths from the same ARIZ context.
+
+8. **Conclusions and Recommendations (Выводы и рекомендации)**  
+   Short conclusions and next steps (e.g., proceed to implementation, refine solution, or return to earlier steps). Base this on the <Solution Evaluation> and <Patent Novelty> blocks above. If relevant, note which of the 5 breakthrough ideas are most realistic for a low budget.
+
+Rules:
+- Reference data only from the blocks above; do not add external facts.
+- Write all section titles and body text in Russian.
+- Keep each section concise; avoid duplicating long quotations from the blocks.
+- If a block is empty, skip the corresponding part of the section or say "Данные не предоставлены" where appropriate.
+- In section 7 (Прорывные идеи): prioritize maximum budget-friendliness and simplicity; avoid frontier R&D and expensive solutions.
+</Instructions>

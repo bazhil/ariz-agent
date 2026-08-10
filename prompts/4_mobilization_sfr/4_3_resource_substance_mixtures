@@ -1,0 +1,54 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<IFR-2>
+{{ $json.ifr_2 }}
+</IFR-2>
+
+<SFR>
+{{ $json.sfr }}
+</SFR>
+
+<Instructions>
+This is step 4.3. of ARIZ-85-V.
+Determine whether the problem can be solved by using mixtures of resource substances (existing or modified) without introducing new materials that complicate the system.
+Use IFR-2 (Stage 3.5) and SFR (Stage 2.3) from the blocks above.
+
+1. Analyze Mono-Substances:
+Identify the primary substances already present in the system.
+List available pure substances in: Operative Zone, Environment, By-products.
+Check if their direct use (without modification) could solve the problem.
+If yes, the problem might not require further steps. If no, proceed to mixtures or modified substances.
+
+2. Transition from Mono-Substances to Non-Uniform Bi-Substances
+- Consider combining two existing substances (or a substance and "emptiness") to create a heterogeneous mixture.
+  Example: Mixing solid particles with voids (e.g., porous material).
+- Avoid simple homogeneous mixtures (e.g., dissolving sugar in water), as they don't introduce new properties.
+
+3. Consider Mixture Types:
+Possible Transformations:
+a) Mono → Heterogeneous bi-substance (A+B)
+b) Mono → Structured bi-substance (A+void)
+c) Mono → Phase-changed substance (A→A')
+
+4. Evaluate Non-Uniform Quasi-Poly-Systems
+- Introduce boundaries or voids between substances to create new functional properties.
+  Example: A notebook (separate sheets + empty space) vs. a thick single sheet.
+- Key question: Does the mixture introduce a beneficial new quality?
+
+5. Avoid Introducing New Substances
+- Goal: "Add new substances without actually adding them" (e.g., using voids, phase changes, or structural modifications).
+  Example: Foam = substance + air (no new material introduced).
+
+6. Evaluate Mixture Effects:
+For each option: Expected benefit, Potential drawbacks, Implementation difficulty: [Low/Medium/High]
+
+Rules:
+- NEVER introduce new external substances
+- PRIORITIZE mixtures using waste/by-products
+- CONSIDER void as a valid "substance"
+- SEEK property emergence from mixtures
+</Instructions>

@@ -1,0 +1,54 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<Operative Zone>
+{{ $json.operative_zone }}
+</Operative Zone>
+
+<Operative Time>
+{{ $json.operative_time }}
+</Operative Time>
+
+<Strengthened IFR-1>
+{{ $json.strengthened_ifr_1 }}
+</Strengthened IFR-1>
+
+<Instructions>
+This is step 3.3. of ARIZ-85-V.
+Define opposing physical requirements for the Operative Zone (OZ) during Operative Time (OT) to sharpen the core conflict.
+Use the blocks above for OZ, OT and Strengthened IFR-1 (Stage 3.2).
+
+Formulate either:
+1. FULL version (preferred): Physical states with actions
+2. SHORT version (if needed): Simple existence/non-existence
+
+1. Full Formulation:
+"The [Operative Zone] during [Operative Time] must:
+- BE [Physical State A] to [Required Action 1],
+- NOT BE [Opposite State B] to [Required Action 2].
+
+2. Short Formulation:
+The [element] must:
+- EXIST to [Action 1],
+- NOT EXIST to [Action 2].
+
+Rules:
+- MUST use physical states (conductive/insulative, hot/cold, solid/gas etc.)
+- MUST reference time constraints (OT phases if applicable)
+- MUST use simple, non-technical language
+- MUST maintain direct opposition between states
+
+For temporal solutions:
+The [OZ] must:
+- BE [State A] during [T1],
+- BE [State B] during [T2].
+
+Critical Warnings:
+- DO NOT accept partial formulations
+- DO NOT jump to solutions prematurely
+- DO NOT use technical jargon
+- DO NOT ignore time aspects
+</Instructions>

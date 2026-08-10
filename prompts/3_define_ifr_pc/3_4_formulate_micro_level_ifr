@@ -1,0 +1,41 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<Macro-Level Contradiction (BE)>
+{{ $json.macro_contradiction_be }}
+</Macro-Level Contradiction (BE)>
+
+<Macro-Level Contradiction (NOT BE)>
+{{ $json.macro_contradiction_not_be }}
+</Macro-Level Contradiction (NOT BE)>
+
+<Operative Zone>
+{{ $json.operative_zone }}
+</Operative Zone>
+
+<Operative Time>
+{{ $json.operative_time }}
+</Operative Time>
+
+<Instructions>
+This is step 3.4. of ARIZ-85-V.
+Define opposing requirements for particles/substances in the Operative Zone (OZ) that explain the macro-level contradiction.
+Use the Macro-Level Contradiction from Stage 3.3 (both parts in the blocks above), OZ and OT from the blocks above.
+
+Core Instruction:
+Specify how particles must behave differently to satisfy both macro-level requirements.
+
+Implementation Steps:
+1. Recall from Step 3.3: Macro-level contradiction, Operative Zone, Operative Time phases
+2. Identify: Particle type that enables Macro-State 1; Opposite/absent state for Macro-State 2
+3. Consider: Field-particle interactions (if relevant); Phase change mechanisms
+
+Rules:
+- MUST connect to macro-contradiction from Step 3.3
+- MAY use generic "particles" without specificity (ions, molecules etc.)
+- MUST maintain clear opposition between particle states
+- SHOULD indicate temporal phases if applicable
+</Instructions>

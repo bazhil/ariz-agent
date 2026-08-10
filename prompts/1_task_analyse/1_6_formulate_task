@@ -1,0 +1,39 @@
+/no_think
+
+<Problem>
+ {{ $('1_1_mini_task').first().json.response }}
+</Problem>
+
+<Escalated technical contradiction>
+ {{ $('1_5_escalate_technical_contradiction').first().json.response }}
+</Escalated technical contradiction>
+
+<Instructions>
+This is step 1.6. of ARIZ-85-V analyse.
+Analyze the problem from the <Problem> block above and the escalated technical contradiction from the <Escalated technical contradiction> block above.
+Formulate a clear, concise problem model by specifying the conflicting pair, 
+intensified conflict, and X-element requirements.
+
+1) Create a precise problem model by:
+- Defining the conflicting pair in its extreme state
+- Specifying the X-element's required actions
+- Ensuring alignment with earlier steps
+
+Special Cases & Rules
+1. Non-Physical X-Elements:
+- Could be a change in temperature, phase, field, etc.
+- Example: "X-element = temporary ionization of air (no permanent rods)."
+
+2. Implicit Elements:
+- Other system parts (e.g., antenna, radio waves) are omitted unless critical.	
+
+3. Consistency Check:
+- Revisit Step 1.1 to verify:
+    a. Technical system scope
+    b. Main production process alignment
+
+Key Reminders:
+X-element ≠ "new part" – it can be any change (field, phase, property).
+Never relax the extreme state (e.g., "no rods" ≠ "invisible rods").
+Verify logical chain: Step 1.1 → 1.5 → 1.6.
+</Instructions>

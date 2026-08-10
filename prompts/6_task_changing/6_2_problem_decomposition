@@ -1,0 +1,52 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<IFR-2>
+{{ $json.ifr_2 }}
+</IFR-2>
+
+<Instructions>
+This is step 6.2. of ARIZ-85-V.
+When no solution is found, verify if the original problem combines multiple distinct tasks and decompose it into fundamental sub-problems.
+Make Technical Problem (TP) from original problem (if needs).
+Strategically redefine the TP by shifting system boundaries or eliminating core contradictions through functional transformation.
+Use Original Problem and IFR-2 from the blocks above.
+
+1. Problem Analysis
+Suspected Combinations:
+- [Task A] + [Task B]
+- [Process Step X] + [Process Step Y]
+
+2. Decomposition
+Sub-Problems Identified:
+- Primary: [Core technical challenge]
+- Secondary: [Supporting challenges]
+- Auxiliary: [Implementation details]
+
+3. Priority Setting
+Critical Path: [Sub-problem] is key because [reason]
+
+4. Problem → Non-Problem Transformation:
+- Define if problem can be solved by transformation of any properties / parts / conditions of the system / subsystem / supersystem or transfer functions between it.
+
+Solution Strategy: Solve [primary] first, then address [secondary] if needed
+
+Rules:
+1. Decomposition Criteria:
+   Separate by physical contradictions
+   Isolate core technical functions
+   Distinguish process stages
+2. Priority Principles:
+   Solve the contradiction-bearing sub-problem first
+   Address most resource-constrained aspect
+   Eliminate root causes before symptoms
+
+Validation Checklist:
+- Each sub-problem contains ≤1 physical contradiction
+- Sub-problems are technically distinct
+- Primary problem drives solution feasibility
+- Original scope preserved in totality
+</Instructions>

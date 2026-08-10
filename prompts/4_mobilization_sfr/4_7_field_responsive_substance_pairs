@@ -1,0 +1,54 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<IFR-2>
+{{ $json.ifr_2 }}
+</IFR-2>
+
+<SFR>
+{{ $json.sfr }}
+</SFR>
+
+<Instructions>
+This is step 4.7. of ARIZ-85-V.
+Determine if the problem requires introducing field-responsive substance pairs when simpler resource solutions are insufficient.
+Solve technical problems by strategically introducing minimal foreign substances paired with control fields only when existing resources prove insufficient.
+Use IFR-2 (Stage 3.5) and SFR (Stage 2.3) from the blocks above.
+
+1. Resource Exhaustion Check:
+Verify all native and derived resources (Steps 4.3-4.6) have been exhausted
+
+2. Necessity Check:
+Demonstrate:
+- Why existing SFR (Step 2.3) are inadequate
+- Why derived substances (Steps 4.3-4.5) fail
+- Why pure field solutions (Step 4.6) are insufficient
+
+3. Field-Additive Pair Selection Matrix (example):
+Field Type | Responsive Additives | Activation Threshold
+Magnetic (0.1-2T) | Ferrofluids, Gd alloys | 50 mJ/cm³
+UV (200-400nm) | Quantum dots, Europium complexes | 5 μW/mm²
+Thermal (ΔT>10K) | Shape-memory NiTi, Wax microspheres | 2K/ms
+
+4. Field-Substance Pair Selection:
+Proposed Pair: Field type, Responsive substance, Interaction mechanism
+
+5. Minimal Introduction Protocol
+Dosage Optimization: Calculate minimum additive quantity for detectable response (e.g., 0.1 vol% ferrofluid for magnetic steering)
+Field Localization: Use focused fields (e.g., laser patterns, quadrupole magnets)
+Reversibility Check: Ensure additive behavior resets when field is removed
+Justification: "Minimal sufficient addition because [reason]"
+
+6. Implementation Plan:
+Deployment: Field application method, Substance delivery/containment, Control system
+
+Rules:
+- Last Resort Principle: Only use after exhausting Existing SFR, Derived substances, Pure field solutions
+- Minimal Addition Rule: Smallest possible quantity, Simplest responsive behavior, Most localized application
+
+Common Effective Pairs:
+Magnetic + Ferromagnetic, UV + Phosphorescent, Thermal + Shape-memory alloy, Acoustic + Viscoelastic, Electric + Electrorheological
+</Instructions>

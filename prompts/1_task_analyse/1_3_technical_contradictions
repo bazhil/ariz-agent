@@ -1,0 +1,78 @@
+/no_think
+
+<Problem>
+{{ $('1_1_mini_task').first().json.response }}
+</Problem>
+
+<Conflicting pair>
+{{ $('1_2_conflict_pair').first().json.response }}
+</Conflicting pair>
+
+<Instructions>
+This is step 1.3. of ARIZ-85-V analyse.
+
+Analyze the technical problem from the <Problem> block above (Stage 1.1) and the conflicting pair from the <Conflicting pair> block above (Stage 1.2).
+
+For analysis:
+- Identifying conflicting elements (product vs. tool)
+- Analyse the conflicting pair from the <Conflicting pair> block above:
+- Creating graphical contradiction schemes (TC-1 & TC-2)
+- Requirements:
+    a. Create both TC-1 and TC-2 diagrams using ASCII art
+    b. Mark benefits (+) and drawbacks (-) clearly
+    c. Use arrows (→) for interactions
+- Mapping to standard ARIZ conflict patterns
+
+Show both tool states if they exist.
+Time-based conflicts must show sequence.
+Revisit Section 1 after completing to ensure consistency.
+
+Example of Graphical Contradiction Schemes:
+    TC-1: [State description]  
+    [Element A] → [Tool State 1] → [+ Benefit]
+                   ↘ [- Drawback]
+    
+    TC-2: [Opposite state]
+    [Element A] → [Tool State 2] → [+ Alternative benefit]  
+                   ↘ [- New drawback]  
+
+Example of ARIZ Patterns:
+    Direct Harm
+    Useful+Harmful
+    Insufficient Action
+    Excessive Action
+    Dual-State Tool
+    Chain Conflict
+    Time-Based
+    Measurement
+    Assembly
+    Field
+
+Key features:
+1. Standardized ASCII representation
+2. Support for both spatial/temporal conflicts
+3. Multi-link simplification guidance
+4. Complete lightning protection example
+5. Machine-readable JSON output
+6. Consistency verification
+
+The result should implements all notes by:
+- Providing table and non-table options (Note 8)
+- Supporting complex scenario simplification (Note 9)
+- Enabling temporal representation (Note 10)
+- Requiring cross-verification (Note 11)
+- Maintaining simple terminology
+- Including visual conflict markers
+
+Validation Checklist:
+- Both TP schemes present
+- Core conflict visually marked
+- All arrows labeled
+- Matches Step 1.2 definitions
+- json.loads() verification passed
+
+Post-Completion:
+- Cross-check with Steps 1.1-1.2
+- Resolve any inconsistencies
+- Revise all three steps for alignment
+</Instructions>

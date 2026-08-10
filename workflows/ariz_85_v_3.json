@@ -1,0 +1,1480 @@
+{
+  "name": "ariz_85_v_3",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "aa3eb1a4-66a4-4f63-9354-065d103e0a0f",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        -192
+      ],
+      "id": "c127a6c2-927a-40ac-8ae9-c4d016b754f9",
+      "name": "Webhook",
+      "webhookId": "aa3eb1a4-66a4-4f63-9354-065d103e0a0f"
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<User message>\n{{ $('Webhook').first().json.body.user_message }}\n</User message>\n\n<Instructions>\nThis is step 1.1. of ARIZ-85-V analyse.\nAnalyse the problem described in the <User message> block above and, using the guidelines below, formulate a concise mini-problem statement that describes a technical system,\nits purpose, key components (including natural elements if applicable), and two technical contradictions (TC-1 and TC-2).\nThe goal is to resolve the conflict with minimal changes to the system.\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        800,
+        -192
+      ],
+      "id": "8b1df3b0-5dcf-40cc-8a0a-22b0b7524968",
+      "name": "1_1_mini_task",
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('1_1_mini_task').first().json.response }}\n</Problem>\n\n<Conflicting pair>\n{{ $('1_2_conflicting_pair').first().json.response }}\n</Conflicting pair>\n\n<Instructions>\nThis is step 1.3. of ARIZ-85-V analyse.\n\nAnalyze the technical problem from the <Problem> block above (Stage 1.1) and the conflicting pair from the <Conflicting pair> block above (Stage 1.2).\n\nFor analysis:\n- Identifying conflicting elements (product vs. tool)\n- Analyse the conflicting pair from the <Conflicting pair> block above:\n- Creating graphical contradiction schemes (TC-1 & TC-2)\n- Requirements:\n    a. Create both TC-1 and TC-2 diagrams using ASCII art\n    b. Mark benefits (+) and drawbacks (-) clearly\n    c. Use arrows (→) for interactions\n- Mapping to standard ARIZ conflict patterns\n\nShow both tool states if they exist.\nTime-based conflicts must show sequence.\nRevisit Section 1 after completing to ensure consistency.\n\nExample of Graphical Contradiction Schemes:\n    TC-1: [State description]  \n    [Element A] → [Tool State 1] → [+ Benefit]\n                   ↘ [- Drawback]\n    \n    TC-2: [Opposite state]\n    [Element A] → [Tool State 2] → [+ Alternative benefit]  \n                   ↘ [- New drawback]  \n\nExample of ARIZ Patterns:\n    Direct Harm\n    Useful+Harmful\n    Insufficient Action\n    Excessive Action\n    Dual-State Tool\n    Chain Conflict\n    Time-Based\n    Measurement\n    Assembly\n    Field\n\nKey features:\n1. Standardized ASCII representation\n2. Support for both spatial/temporal conflicts\n3. Multi-link simplification guidance\n4. Complete lightning protection example\n5. Machine-readable JSON output\n6. Consistency verification\n\nThe result should implements all notes by:\n- Providing table and non-table options (Note 8)\n- Supporting complex scenario simplification (Note 9)\n- Enabling temporal representation (Note 10)\n- Requiring cross-verification (Note 11)\n- Maintaining simple terminology\n- Including visual conflict markers\n\nValidation Checklist:\n- Both TP schemes present\n- Core conflict visually marked\n- All arrows labeled\n- Matches Step 1.2 definitions\n- json.loads() verification passed\n\nPost-Completion:\n- Cross-check with Steps 1.1-1.2\n- Resolve any inconsistencies\n- Revise all three steps for alignment\n</Instructions>",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        1376,
+        -192
+      ],
+      "id": "6fae2e7c-3b65-4950-ac87-dec7dc942b20",
+      "name": "1_3_technical_contradictions",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('1_1_mini_task').first().json.response }}\n</Problem>\n\n<Instructions>\nThis is step 1.2. of ARIZ-85-V analyse.\nAnalyse the problem and technical contradictions (TC-1 and TC-2) described in the <Problem> block above that need to be resolved.\nIdentify and describe the conflicting pair of elements in the technical system: \nthe product (element to be processed) and the tool (element directly interacting with the product).\n\nDual-State Tools: If the tool can exist in two distinct states (e.g., many/few, on/off), you must specify both states.\nHomogeneous Pairs: If there are multiple similar interacting pairs, just analyze one representative pair.\nSimple Language: Avoid technical jargon - use common terms (e.g., \"conducting rod\" instead of \"lightning rod\").\nDual Elements: Note if either the product or tool consists of two elements that conflict with each other.\n\nRules:\n1) Product Identification:   \n    - What is being processed/changed\n    - May be tool in detection tasks (Note 5)\n    - Specify all required states (Rule 1)\n2) Tool Identification:\n    - Directly interacts with product (Note 6)\n    - Not the whole machine, just active part\n    - Include all relevant states\n3) For Dual Elements (Note 7):\n    - Mark in \"dual_elements\" field\n    - Specify how they interfere\n\nProblem scope:\n- Start from inventive situation but add constraints\n- Sharpen contradictions (no compromises)\n- Maintain full system complexity despite \"mini\" label\n\nComponents:\n- Must include both technical and natural elements\n- List all interacting components (3-5 total)\n\nContradictions:\nTC-1 and TC-2 must be:\n- Same component\n- Opposite states\n- Mutually exclusive benefits\n</Instructions> ",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        1088,
+        -192
+      ],
+      "id": "ef427e2a-5f75-4ae5-826e-60e0cc88c3f5",
+      "name": "1_2_conflicting_pair",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('1_1_mini_task').item.json.response }}\n</Problem>\n\n<Technical contradictions>\n{{ $('1_3_technical_contradictions').item.json.response }}\n</Technical contradictions>\n\n<Instructions>\nThis is step 1.4. of ARIZ-85-V analyse.\n\nAnalyse the problem from the <Problem> block above and the technical contradictions from the <Technical contradictions> block above. Identify the best technical contradiction to solve.\nIdentify which technical contradiction (TC-1 or TC-2) best preserves the main production process (MPP) of the system.\n\nSpecial Cases:\n1) Measurement Systems:\n    - MPP is typically the end product's manufacturing process, not the measurement itself.\n    - Exception: Scientific measurement tasks where measurement is the end goal.\n\nRules:\n1) MPP Identification:\n    - For measurement systems: parent process (Note 13)\n    - Use \"for [action]ing [object]\" format\n    - Exception: pure scientific measurement\n2) Contradiction Selection:\n    - Choose TP that preserves MPP\n    - Never compromise between states (Note 12)\n    - Accept secondary drawbacks\n3) Solution Requirements:\n    - Keep selected tool state\n    - Add opposite state's benefit\n    - No hybrid solutions\n</Instructions> ",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        1664,
+        -192
+      ],
+      "id": "a7879f36-1ab9-41e7-a94f-2757cf56f92b",
+      "name": "1_4_choose_technical_contradictions",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Technical contradiction>\n{{ $('1_4_choose_technical_contradictions').first().json.response }}\n</Technical contradiction>\n\n<Instructions>\nThis is step 1.5. of ARIZ-85-V analyse.\nReformulate and intensify/escalate the selected technical contradiction (TC-1 or TC-2) described in the <Technical contradiction> block above by pushing the tool's state to its absolute limit to sharpen the conflict.\n\nReminder:\n- Never soften the extreme state later (\"no rods\" ≠ \"a few tiny rods\").   \n- If stuck, return to Step 1.1 to check for misidentified MPP.\n\nRules:\n1) Intensification Principles:          \n    - Quantity: few → none / many → infinite\n    - Strength: weak → zero / strong → maximum\n    - Size: small → nonexistent / large → infinite\n    - Time: rare → never / frequent → constant\n\n2) State Transformation:\n    - Never create intermediate states\n    - Use absolute terms (\"none\", \"complete\")\n    - Maintain original contradiction essence          \n\n3) Post-Intensification:\n    - Document extreme state requirements\n    - Prohibit any intermediate solutions\n    - Prepare for ideal final result formulation\n\n4) Validation Checklist:\n    - Original TP properly referenced\n    - States pushed to absolute extremes\n    - No new compromise states created\n    - Rule 3 properly applied for \"few→none\"\n    - json.loads() verification passed\n    \nExample of Graphical Contradiction Schemes:\n    TC-1: [State description]  \n    [Element A] → [Tool State 1] → [+ Benefit]\n                   ↘ [- Drawback]\n    \n    TC-2: [Opposite state]\n    [Element A] → [Tool State 2] → [+ Alternative benefit]  \n                   ↘ [- New drawback]  \n</Instructions>",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        1952,
+        -192
+      ],
+      "id": "e45e7c4e-ab8a-4021-8764-3557219ce4b3",
+      "name": "1_5_escalate_technical_contradictions",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n {{ $('1_1_mini_task').first().json.response }}\n</Problem>\n\n<Escalated technical contradiction>\n {{ $('1_5_escalate_technical_contradictions').first().json.response }}\n</Escalated technical contradiction>\n\n<Instructions>\nThis is step 1.6. of ARIZ-85-V analyse.\nAnalyze the problem from the <Problem> block above and the escalated technical contradiction from the <Escalated technical contradiction> block above.\nFormulate a clear, concise problem model by specifying the conflicting pair, \nintensified conflict, and X-element requirements.\n\n1) Create a precise problem model by:\n- Defining the conflicting pair in its extreme state\n- Specifying the X-element's required actions\n- Ensuring alignment with earlier steps\n\nSpecial Cases & Rules\n1. Non-Physical X-Elements:\n- Could be a change in temperature, phase, field, etc.\n- Example: \"X-element = temporary ionization of air (no permanent rods).\"\n\n2. Implicit Elements:\n- Other system parts (e.g., antenna, radio waves) are omitted unless critical.\t\n\n3. Consistency Check:\n- Revisit Step 1.1 to verify:\n    a. Technical system scope\n    b. Main production process alignment\n\nKey Reminders:\nX-element ≠ \"new part\" – it can be any change (field, phase, property).\nNever relax the extreme state (e.g., \"no rods\" ≠ \"invisible rods\").\nVerify logical chain: Step 1.1 → 1.5 → 1.6.\n</Instructions>",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        2256,
+        -192
+      ],
+      "id": "d0a737cb-250b-4124-b1b2-e58b36254f1d",
+      "name": "1_6_formulate_task",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Formulated task>\n{{ $('1_6_formulate_task').first().json.response }}\n</Formulated task>\n\n<Escalated technical contradiction>\n {{ $('1_5_escalate_technical_contradictions').first().json.response }}\n</Escalated technical contradiction>\n\n<Instructions>\nThis is step 1.7. of ARIZ-85-V analyse.\nEvaluate whether standard TRIZ solutions can resolve the formulated problem model from the <Formulated task> block above and the <Escalated technical contradiction> block above.\nAnalyse:\n1) Conflict pair from the <Formulated task> block (step 1.6).\n2) Escalated technical contradiction from the <Escalated technical contradiction> block above.\n3) X-element requirements from the <Formulated task> block (step 1.6).\n\nIf unsuccessful, proceed to Part 2 of ARIZ.\nStep 1: Prepare Problem Model for Standard Solutions\n\nStep 2: TRIZ Standards Classification\nAnalyse which TRIZ standard solutions can be applied in this situation.\n\nFive Main Categories of Standards:\n1. Modify Systems\n    1.1 Segmentation\n    1.2 Field modification\n    1.3 Transition to micro-level\n\n2. Resolve Measurement Conflicts\n    2.1 Indirect measurement\n    2.2 Introduce feedback\n\n3. Simplify Systems\n    3.1 Discard/recover elements\n    3.2 Use porous materials\n\n4. Enhance Fields\n    4.1 Replace mechanical fields\n    4.2 Use phase transitions\n\n5. Prevent Harmful Effects\n    5.1 Introduce protective substances\n    5.2 Counteract with opposite fields\n\nStep 3: Application Process\nDescribe how the standard could address the X-element requirement?\n\nStep 4: Decision Point\n\nRules:\n1. Standard Evaluation:\n    - Check against current model (not original problem)\n    - Consider non-material solutions (from 1.6)\n    - Require ≥80% match to count as solved\n2. Decision Making:\n    - If solved: Can proceed to Part 7 (but should proceed to Part 2)\n    - If unsolved: Must proceed to Part 2\n    - Document solution and all attempted standards\n3. Quality Control:\n    - Verify model consistency with previous steps\n    - Ensure all standard categories were checked\n4. Key Considerations:\n    - Document All Attempts even if successful – other standards may yield better solutions.\n    - Non-Physical Solutions Preferred: Fields > substances > structural changes.\n    - Time Limit: Spend ≤10 min on standards check before moving to Part 2.\n5. Need Adaptations For:\n    - Chemical/biological systems?\n    - Software/process problems?\n    - High-risk constraints (medical/aerospace)?\n6. Validation Checklist:\n    - All standard categories checked:\n        Segmentation (1.1.x)\n        Field modification (1.2.x)\n        Phase transitions (2.2.x)\n        Self-service (3.3.x)\n    - Matches current problem model\n    - No compromise solutions\n    - Proper decision routing\n\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        -192
+      ],
+      "id": "9c9a17ae-6008-4b05-bc32-8126e185816c",
+      "name": "1_7_search_standart_solutions",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Task>\n{{ $('1_1_mini_task').first().json.response }}\n</Task>\n\n<Escalated Contradiction>\n{{ $('1_5_escalate_technical_contradictions').first().json.response }}\n</Escalated Contradiction>\n\n<Conflict Pair>\n{{ $('1_2_conflicting_pair').first().json.response }}\n</Conflict Pair>\n\n<Instructions>\nThis is step 2.1. of ARIZ-85-V.\nIdentify the Operative Zone (OZ)—the specific space where the conflict occurs in the system.\nUse the Task (Step 1.6), Escalated Contradiction (Step 1.5) and Conflict Pair (Step 1.6) from the blocks above.\n\nRules:\n- Minimalist Approach: Focus only on the space directly involved in the conflict.\n- \"Empty\" Concept: If the tool is absent (e.g., \"no rods\"), visualize the space it would occupy.\n- Include Interfaces: Add adjacent elements if they participate in the conflict (e.g., where lightning meets antenna).\n\nQuestions to Guide Ideation:\n- How can the OZ's properties be modified? (e.g., fill it with a field, not an object).\n- What exists around the OZ that could replace its function? (e.g., antenna's own structure).\n- Can the OZ be temporarily activated? (e.g., ionized air only during storms).\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        2928,
+        -80
+      ],
+      "id": "85021f16-577b-4cae-ba1b-56f1161afd7f",
+      "name": "2_1_define_operative_zone",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Task>\n{{ $('1_1_mini_task').first().json.response }}\n</Task>\n\n<Escalated Contradiction>\n{{ $('1_5_escalate_technical_contradictions').first().json.response }}\n</Escalated Contradiction>\n\n<Conflict Pair>\n{{ $('1_2_conflicting_pair').first().json.response }}\n</Conflict Pair>\n\n<Instructions>\nThis is step 2.2. of ARIZ-85-V.\nIdentify Operative Time (OT)—the available time resources to resolve or prevent the conflict, including:\n- T1 (Conflict Time): Duration of the harmful interaction.\n- T2 (Pre-Conflict Time): Time available before the conflict occurs (if applicable).\n\nKey Notes:\n- OT = T1 + T2 (if both intervals exist).\n- T2 is critical for prevention—short-lived conflicts (e.g., lightning strikes) can often only be resolved before they occur (during T2).\n- If T2 is absent (e.g., continuous conflict), focus shifts to managing T1.\n\nDefine Time Components and Time-Driven Solution Strategies.\n\nRules:\n- For T1-Dominant Conflicts (T2 = 0): Solutions must act during the conflict (e.g., instant field redirection).\n- For T2 > 0: Leverage the pre-conflict window for prevention (e.g., pre-ionize air).\n\nVisual Timeline (Optional) ASCII Diagram example:\n[T2: Pre-Conflict] → [T1: Conflict] → [Post-Conflict]\n   |________________|\n   Solution Window\n\nKey Reminders:\n- If conflict is instantaneous (e.g., lightning), T2 = 0.\n- For repeating conflicts, OT cycles (T1→T2→T1...).\n- Revisit Step 2.1 (OZ) to align spatial and temporal boundaries.\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        3232,
+        -80
+      ],
+      "id": "f874f68c-662d-4277-ab1c-291430562fca",
+      "name": "2_2_defina_operative_time",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n\n<Instructions>\nThis is step 2.3. of ARIZ-85-V.\nList all Substance-Field Resources (SFR)—existing or easily obtainable substances and fields—that can be used to solve the problem, categorized by their origin.\n\nStep 1: Categorize SFR\nFormat:\n1. Intra-System SFR (Inside the System):\n   - Tool SFR: [Substances/fields from the tool]\n   - Product SFR: [Substances/fields from the product *if changeable*]\n\n2. Extra-System SFR (External Environment):\n   - Task-Specific: [Unique to the problem, e.g., water in a liquid sample]\n   - Background Fields: [Universal: gravity, Earth's magnetic field, etc.]\n\n3. Supra-System SFR (Beyond the System):\n   - Waste from Other Systems: [If accessible]\n   - \"Penny\" Resources: [Cheap/negligible-cost elements]\n\n4. Special Cases for Product SFR (Note 21)\n   - Though the product is typically immutable, exceptions include when it:\n     a) Changes autonomously,\n     b) Allows partial consumption (e.g., wind),\n     c) Shifts to the suprasystem (e.g., a brick unchanged, but the house changes),\n     d) Uses micro-level structures,\n     e) Interacts with \"nothingness\" (void/emptiness),\n     f) Temporarily modifies itself.\n\n5. Key Reminder (Note 22):\n   - Product SFR: Only if change is reversible/non-destructive.\n   - SFR are preliminary resources—use them first before introducing new substances/fields.\n   - SFR should ideally be found within the system/environment, or from inexpensive sources.\n   - \"Penny\" Resources: Ideal for low-cost solutions (e.g., sunlight, ambient heat).\n   - Revisit Steps 2.1 (OZ) & 2.2 (OT): Align SFR with spatial/temporal constraints using the <Operative Zone> and <Operative Time> blocks above.\n\nSpecial Cases for Product SFR Example:\nWhen Product Resources Can Be Used:\n- Self-changing (e.g., wind's natural variability)\n- Abundant (e.g., expendable parts of an infinite resource)\n- Micro-level modifications (e.g., surface coatings)\n- Temporary changes (e.g., reversible phase shifts)\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        3536,
+        -80
+      ],
+      "id": "860253ca-5711-4b53-877d-fe49ff073fbe",
+      "name": "2_3_define_substance_field_resources",
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n<Instructions>\nThis is step 3.1. of ARIZ-85-V.\nDefine IFR-1: structure, key components, conflict types.\nUse Operative Zone (OZ) from Stage 2.1 and Operative Time (OT) from Stage 2.2 from the blocks above.\n\nNon-Negotiables:\n- No compromises (e.g., \"slightly more complex\" is invalid).\n- No new drawbacks (e.g., \"X-element works but drains power\").\n\nRules:\n1) X-element Requirements:\n   - Must not add complexity\n   - Must not create new problems\n   - Can be non-material (field, state change)\n2) Conflict Types (Note 23):\n   - \"harmful-useful\": Traditional contradiction\n   - \"dual-useful\": Two incompatible benefits\n   - \"new-useful\": Added function causes complexity\n3) Formulation Quality:\n   - Absolute terms (\"completely\", \"fully\")\n   - No compromise language\n   - Matches problem model from 1.6\n\nKey Reminders:\n- Ideal = No Cost: X-element should be \"invisible\" (e.g., use existing fields/resources).\n- Revisit Prior Steps: Ensure alignment with OZ, OT, and SFR.\n- Think Extreme: \"The system solves the problem by itself.\"\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        3856,
+        80
+      ],
+      "id": "1b054c26-9212-42a7-b743-25d5258f80d1",
+      "name": "3_1_define_ifr_1",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-1>\n{{ $('3_1_define_ifr_1').first().json.response }}\n</IFR-1>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n<Instructions>\nThis is step 3.2. of ARIZ-85-V.\nReformulate the Ideal Final Result (IFR-1) from the <IFR-1> block above to align with the Operative Time (OT) and Operative Zone (OZ) constraints by prohibiting new substances/fields and mandating use of existing Substance-Field Resources (SFR).\n\nStrengthened IFR-1:\nThe [X-element replaced by SFR], without introducing new substances/fields:\na) Eliminates [harmful action]\nb) Within [OT]\nc) In [OZ]\nd) While preserving [useful action].\n\nRules:\n1. SFR Priority Order:\n   a) Tool's SFR → b) External environment → c) By-products → d) Product SFR (if allowed)\n2. Terminology:\n   Replace \"X-element\" with specific SFR (e.g., \"air column\" instead of abstract X)\n   Use simple, non-technical language (e.g., \"lightning attractor\" not \"electrode\")\n\nMulti-Screen Thinking:\nConsider parallel solutions across:\n- Supersystem (environment)\n- System (current components)\n- Subsystems (micro-level)\n\nNote:\n- For training purposes, attempt solutions along ALL SFR lines\n- In real applications, stop at first viable idea\n- Avoid technical jargon - describe functions, not mechanisms\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        4144,
+        80
+      ],
+      "id": "5862ad4f-38df-4537-8b2a-f0c68e926817",
+      "name": "3_2_improve_ifr_1",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n<Strengthened IFR-1>\n{{ $('3_2_improve_ifr_1').first().json.response }}\n</Strengthened IFR-1>\n\n<Instructions>\nThis is step 3.3. of ARIZ-85-V.\nDefine opposing physical requirements for the Operative Zone (OZ) during Operative Time (OT) to sharpen the core conflict.\nUse the blocks above for OZ, OT and Strengthened IFR-1 (Stage 3.2).\n\nFormulate either:\n1. FULL version (preferred): Physical states with actions\n2. SHORT version (if needed): Simple existence/non-existence\n\n1. Full Formulation:\n\"The [Operative Zone] during [Operative Time] must:\n- BE [Physical State A] to [Required Action 1],\n- NOT BE [Opposite State B] to [Required Action 2].\n\n2. Short Formulation:\nThe [element] must:\n- EXIST to [Action 1],\n- NOT EXIST to [Action 2].\n\nRules:\n- MUST use physical states (conductive/insulative, hot/cold, solid/gas etc.)\n- MUST reference time constraints (OT phases if applicable)\n- MUST use simple, non-technical language\n- MUST maintain direct opposition between states\n\nFor temporal solutions:\nThe [OZ] must:\n- BE [State A] during [T1],\n- BE [State B] during [T2].\n\nCritical Warnings:\n- DO NOT accept partial formulations\n- DO NOT jump to solutions prematurely\n- DO NOT use technical jargon\n- DO NOT ignore time aspects\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        4448,
+        80
+      ],
+      "id": "af64823c-d0d0-4635-b977-c581239ca044",
+      "name": "3_3_formulate_macro_level_ifr",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Macro-Level Contradiction>\n{{ $('3_3_formulate_macro_level_ifr').first().json.response }}\n</Macro-Level Contradiction>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n<Instructions>\nThis is step 3.4. of ARIZ-85-V.\nDefine opposing requirements for particles/substances in the Operative Zone (OZ) that explain the macro-level contradiction.\nUse the Macro-Level Contradiction from Stage 3.3 (both parts in the blocks above), OZ and OT from the blocks above.\n\nCore Instruction:\nSpecify how particles must behave differently to satisfy both macro-level requirements.\n\nImplementation Steps:\n1. Recall from Step 3.3: Macro-level contradiction, Operative Zone, Operative Time phases\n2. Identify: Particle type that enables Macro-State 1; Opposite/absent state for Macro-State 2\n3. Consider: Field-particle interactions (if relevant); Phase change mechanisms\n\nRules:\n- MUST connect to macro-contradiction from Step 3.3\n- MAY use generic \"particles\" without specificity (ions, molecules etc.)\n- MUST maintain clear opposition between particle states\n- SHOULD indicate temporal phases if applicable\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        4752,
+        80
+      ],
+      "id": "d406ac3a-44f9-4cd2-8e51-7b869b5c18b0",
+      "name": "3_4_formulate_micro_level_ifr",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Micro-Level Contradiction>\n{{ $('3_4_formulate_micro_level_ifr').first().json.response }}\n</Micro-Level Contradiction>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n<Instructions>\nThis is step 3.5. of ARIZ-85-V.\nDefine the ultimate ideal solution where the Operative Zone (OZ) autonomously achieves opposite physical states during Operative Time (OT).\nUse the Micro-Level Contradiction from Step 3.4 in the block above, and OZ, OT from the blocks above.\n\nCore Instruction:\nThe OZ should SELF-MANAGE its state transitions without external intervention.\n\nIFR-2 Statement:\n\"The [Operative Zone] during [Operative Time phases] must AUTONOMOUSLY:\n1. TRANSFORM from [State A] to [State B] when [Condition 1],\n2. REVERT from [State B] to [State A] when [Condition 2].\n\nRules:\n- MUST use self-action verbs (\"transform\", \"convert\", \"rearrange\")\n- MUST specify transition triggers (temporal/event-based)\n- MUST maintain connection to micro-level contradiction (Step 3.4)\n- MUST require zero external control/energy\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        5056,
+        80
+      ],
+      "id": "bf10d5be-fd23-4d87-82ba-05a65beeb391",
+      "name": "3_5_formulate_ifr_2",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Instructions>\nThis is step 3.6. of ARIZ-85-V.\nEvaluate whether standard TRIZ solutions can resolve the physical problem formulated in IFR-2 from the block above.\nApply TRIZ standard solutions to the IFR-2 statement before proceeding to Part 4.\n\nStandard Solutions Check:\n1. Attempted Standard: [Number + Name]\n   - Application: [How it addresses IFR-2]\n   - Result: [Solved / Not solved]\n2. [Repeat for other relevant standards]\n\nStandard Solutions to Consider:\n- Segmentation (1.1)\n- Field Modification (1.2)\n- Phase Transitions (2.2.1)\n- Self-Service (3.3.1)\n- Porous Materials (3.2.1)\n- Field Interaction (4.1)\n\nRules:\n- MUST use standards that match IFR-2's autonomous requirement\n- MUST verify both state transitions (forward/reverse)\n- MUST use simple physics/chemistry principles\n- MUST maintain zero external control\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        5360,
+        80
+      ],
+      "id": "b417afc7-b36b-4805-a577-a59bad21b49f",
+      "name": "3_6_standart_solutions_check",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Conflicting Pair>\n{{ $('1_2_conflicting_pair').first().json.response }}\n</Conflicting Pair>\n\n<Instructions>\nThis is step 4.1. of ARIZ-85-V.\nUse \"Little People\" modeling to visualize and resolve the physical contradiction through anthropomorphic representation.\nUse IFR-2 (Stage 3.5) and Conflicting pair (Stage 1.6) from the blocks above.\n\n1. Conflict Modeling (4.1a):\nDraw/Describe:\n- Identify the conflicting elements in the problem (e.g., tool, X-element)\n- [Element A] as group of little people doing [Conflict Action 1]\n- [Element B] as group doing [Conflict Action 2]\n- Highlight the incompatible behaviors causing conflict\n\n2. Conflict Resolution (4.1b):\nModify to show:\n- Modify the initial scheme so that the \"little men\" act without conflict\n- Use sequential drawings if the scenario involves time-based changes\n- Highlight the difference between the \"bad\" (conflict) and \"good\" (resolved) actions\n- How groups could reorganize to eliminate conflict\n- Time-phased changes if needed (before/during/after conflict)\n- Different behaviors between OZ and non-OZ areas\n\n3. Technical Translation (4.1c):\nConvert to:\n- Physical mechanism suggested by the Little People solution\n- Translate the resolved \"little men\" scheme into a technical concept\n- Indicate possible physical changes (e.g., separation, modification of properties)\n- Required substance-field changes\n\nRules:\n- ONLY model changeable elements (tool/X-element)\n- Show BOTH conflict and resolution states\n- Use SIMPLE, wordless visualization when possible\n- Maintain connection to IFR-2 requirements\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        5680,
+        256
+      ],
+      "id": "8633fb0b-d508-447a-92d9-269f6285d537",
+      "name": "4_1_little_people_modeling",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Instructions>\nThis is step 4.2. of ARIZ-85-V.\nSolve problems by intentionally introducing minimal deviations from the ideal state.\nUse the \"Step Back from IFR\" method. Ideal Final Result 2 (Stage 3.5) is in the <IFR-2> block above.\n\n1. Draw/Describe:\n- Clearly describe the ready-made system in its ideal state (IFR).\n- The ideal final configuration where system works perfectly\n- All components in their optimal positions/relations\n\n2. Modify to show:\n- One small, intentional degradation from ideal\n- Smallest possible deviation (e.g., a gap, misalignment, or missing element)\n- Smallest possible change that breaks the system\n\n3. Formulate Micro-Problem:\n- Identify the new defect caused by the deviation\n\n4. Analyze:\n- Identify the new defect caused by the deviation\n- Why this specific deviation causes failure\n- Minimal adjustment needed to restore functionality\n\n5. Extend to the Original Problem:\n- Assess whether the micro-solution suggests a way to resolve the main problem\n\nRules:\n- Make the SMALLEST possible change from ideal\n- Focus on INTERFACES between components\n- Create simple SOLVABLE micro-problems\n- Maintain connection to original physics\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        6000,
+        256
+      ],
+      "id": "144553e6-5cc9-4378-b02c-42d4943751af",
+      "name": "4_2_step_back_from_ifr",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Substance Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance Field Resources>\n\n<Instructions>\nThis is step 4.3. of ARIZ-85-V.\nDetermine whether the problem can be solved by using mixtures of resource substances (existing or modified) without introducing new materials that complicate the system.\nUse IFR-2 (Stage 3.5) and Substance Field Resources (Stage 2.3) from the blocks above.\n\n1. Analyze Mono-Substances:\nIdentify the primary substances already present in the system.\nList available pure substances in: Operative Zone, Environment, By-products.\nCheck if their direct use (without modification) could solve the problem.\nIf yes, the problem might not require further steps. If no, proceed to mixtures or modified substances.\n\n2. Transition from Mono-Substances to Non-Uniform Bi-Substances\n- Consider combining two existing substances (or a substance and \"emptiness\") to create a heterogeneous mixture.\n  Example: Mixing solid particles with voids (e.g., porous material).\n- Avoid simple homogeneous mixtures (e.g., dissolving sugar in water), as they don't introduce new properties.\n\n3. Consider Mixture Types:\nPossible Transformations:\na) Mono → Heterogeneous bi-substance (A+B)\nb) Mono → Structured bi-substance (A+void)\nc) Mono → Phase-changed substance (A→A')\n\n4. Evaluate Non-Uniform Quasi-Poly-Systems\n- Introduce boundaries or voids between substances to create new functional properties.\n  Example: A notebook (separate sheets + empty space) vs. a thick single sheet.\n- Key question: Does the mixture introduce a beneficial new quality?\n\n5. Avoid Introducing New Substances\n- Goal: \"Add new substances without actually adding them\" (e.g., using voids, phase changes, or structural modifications).\n  Example: Foam = substance + air (no new material introduced).\n\n6. Evaluate Mixture Effects:\nFor each option: Expected benefit, Potential drawbacks, Implementation difficulty: [Low/Medium/High]\n\nRules:\n- NEVER introduce new external substances\n- PRIORITIZE mixtures using waste/by-products\n- CONSIDER void as a valid \"substance\"\n- SEEK property emergence from mixtures\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        6320,
+        256
+      ],
+      "id": "195ddfb8-aa33-4ec4-908e-92363c7444f4",
+      "name": "4_3_substance_resource_mixtures",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Substance Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance Field Resources>\n\n<Instructions>\nThis is step 4.4. of ARIZ-85-V.\nDetermine if the problem can be solved by replacing existing resource substances with emptiness (voids, gaps, or low-pressure zones) or by mixing substances with emptiness to achieve new functional properties.\nUse IFR-2 (Stage 3.5) and Substance Field Resources (Stage 2.3) from the blocks above.\n\n1. Identify the Problem Constraints\n- What is the primary function of the current substance(s)?\n- What properties need improvement (e.g., weight, conductivity, transparency)?\n\n2. Identify Void Opportunities:\nDefinition of \"emptiness\":\n- Vacuum (complete absence of matter).\n- Gas-filled voids (e.g., air pockets, bubbles).\n- Liquid-filled gaps (if the base material is solid).\n- Microstructural gaps (e.g., pores, lattice defects).\nPotential Void Applications:\n- Replace [Substance A] with void in [Operative Zone]\n- Create mixture of [Substance B] + void with [structure type]\n- Use void to modify [property] through [mechanism]\n\n3. Evaluate Void Effects / Possible Modifications:\nFor each option: Property change, Implementation method, Connection to IFR-2\n\n4. Select Optimal Void Solution:\n- Chosen Approach: \"[Description] because [justification]\"\n- Expected Outcome: \"[How it resolves the contradiction]\"\n\n5. Check for Functional Improvements\n- Does the new structure retain necessary functionality?\n- Does it introduce beneficial new properties (e.g., lighter weight, better insulation)?\n\n6. Verify Feasibility\n- Can this be achieved without introducing new materials?\n- Does it avoid harmful side effects (e.g., structural weakness)?\n\nRules:\n- Consider ALL void types (vacuum, pores, bubbles, etc.)\n- Void may contain other existing substances\n- Prioritize simplest void structures\n- Must enable required state switching\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        6624,
+        256
+      ],
+      "id": "0fe53129-cc6e-4c1b-9357-bfae9a4f1b32",
+      "name": "4_4_void_utilization",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Substance Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance Field Resources>\n\n<Instructions>\nThis is step 4.5. of ARIZ-85-V.\nSolve the problem by creating derived substances from existing resources through state changes or decomposition/recomposition, potentially mixed with void.\nUse IFR-2 (Stage 3.5) and Substance Field Resources (Stage 2.3) from the blocks above.\n\n1. Substance Hierarchy Analysis:\nAvailable resource substances\nCurrent structural level: [Identify current organization level]\nRequired particles: [Specify needed particles from IFR-2]\n\n2. Transformation Pathways:\nOption A (Rule 8 - Breakdown):\n[Higher-level substance] → [Required particles] via [breakdown method]\n\nOption B (Rule 9 - Buildup):\n[Lower-level particles] → [Required particles] via [synthesis method]\n\nOption C (State Change):\n[Substance] → [Derived state] via [process]\n\n3. Void Integration:\nProposed mixture: [Derived substance] + [void structure] for enhanced [property modification]\n\nRules:\n- Rule 8 (Breakdown): Destroy nearest whole higher level\n- Rule 9 (Buildup): Construct from nearest partial lower level\n- Rule 10 (Optimal Path): Breakdown: Target complete structures; Buildup: Target incomplete structures\n- Prioritize reversible transformations\n\nSubstance Hierarchy Guide:\nManufactured items (e.g., wire) → Supramolecular structures (crystals, polymers) → Complex molecules → Simple molecules → Molecular fragments → Atoms → Subatomic particles → Fields\n\nKey Considerations:\n- Match transformation to time constraints (OT)\n- Ensure compatibility with OZ requirements\n- Consider energy requirements for transformations\n- Evaluate reversibility needs\n\nCommon Transformation Methods:\nPhase changes (melting/vaporization), Dissociation/ionization, Chemical decomposition, Field-induced restructuring, Catalytic conversion\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        6944,
+        256
+      ],
+      "id": "a8def151-27cc-4355-8f0f-51d926c6e9ed",
+      "name": "4_5_derived_substance_solutions",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Substance Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance Field Resources>\n\n<Instructions>\nThis is step 4.6. of ARIZ-85-V.\nDetermine if the problem can be solved by introducing electric fields or field interactions instead of material substances.\nSolve technical problem by replacing material substances with electric fields or electron interactions when physical matter use is constrained.\nUse IFR-2 (Stage 3.5) and Substance Field Resources (Stage 2.3) from the blocks above.\n\n1. Field Application Options:\nOption 1: Replace substance with [type] electric field\nOption 2: Use interaction between [Field A] and [Field B]\nOption 3: Utilize electron behavior (mobile/static)\n\n2. Field-Substance Comparison:\nAdvantages: No material introduction, Precise control, Reversibility\nConstraints: Energy requirements, Field containment, Safety factors\n\n3. Electron Utilization:\nApproach: Use [mobile/static] electrons to achieve [function]\nMethod: [Description of electron control mechanism]\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        7264,
+        256
+      ],
+      "id": "1f426f4d-a7fe-4b3e-aebf-962986cabf45",
+      "name": "4_6_electric_field_solutions",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Substance Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance Field Resources>\n\n<Instructions>\nThis is step 4.7. of ARIZ-85-V.\nDetermine if the problem requires introducing field-responsive substance pairs when simpler resource solutions are insufficient.\nSolve technical problems by strategically introducing minimal foreign substances paired with control fields only when existing resources prove insufficient.\nUse IFR-2 (Stage 3.5) and Substance Field Resources (Stage 2.3) from the blocks above.\n\n1. Resource Exhaustion Check:\nVerify all native and derived resources (Steps 4.3-4.6) have been exhausted\n\n2. Necessity Check:\nDemonstrate:\n- Why existing SFR (Step 2.3) are inadequate\n- Why derived substances (Steps 4.3-4.5) fail\n- Why pure field solutions (Step 4.6) are insufficient\n\n3. Field-Additive Pair Selection Matrix (example):\nField Type | Responsive Additives | Activation Threshold\nMagnetic (0.1-2T) | Ferrofluids, Gd alloys | 50 mJ/cm³\nUV (200-400nm) | Quantum dots, Europium complexes | 5 μW/mm²\nThermal (ΔT>10K) | Shape-memory NiTi, Wax microspheres | 2K/ms\n\n4. Field-Substance Pair Selection:\nProposed Pair: Field type, Responsive substance, Interaction mechanism\n\n5. Minimal Introduction Protocol\nDosage Optimization: Calculate minimum additive quantity for detectable response (e.g., 0.1 vol% ferrofluid for magnetic steering)\nField Localization: Use focused fields (e.g., laser patterns, quadrupole magnets)\nReversibility Check: Ensure additive behavior resets when field is removed\nJustification: \"Minimal sufficient addition because [reason]\"\n\n6. Implementation Plan:\nDeployment: Field application method, Substance delivery/containment, Control system\n\nRules:\n- Last Resort Principle: Only use after exhausting Existing SFR, Derived substances, Pure field solutions\n- Minimal Addition Rule: Smallest possible quantity, Simplest responsive behavior, Most localized application\n\nCommon Effective Pairs:\nMagnetic + Ferromagnetic, UV + Phosphorescent, Thermal + Shape-memory alloy, Acoustic + Viscoelastic, Electric + Electrorheological\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        7584,
+        256
+      ],
+      "id": "78141512-aa60-47b0-9597-ecea8e9a9dab",
+      "name": "4_7_field_responsive_substance_pairs",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Substance Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance Field Resources>\n\n<Gap Analysis>\n{{ $('4_2_step_back_from_ifr').first().json.response }}\n</Gap Analysis>\n\n<Instructions>\nThis is step 5.1. of ARIZ-85-V.\nRefine resources, focusing on additive-based approaches when necessary.\nSystematically resolve contradictions by applying TRIZ standards after exhausting native/derived resources, focusing on optimal additive/field introduction.\nUse the blocks above for IFR-2, Available Substance Field Resources and Gap Analysis.\n\n1. Confirm ICR-2 Formulation:\n- Re-state Ideal Final Result with refined operational zone\n- Attach VPR inventory from Part 4 analysis\n\n2. Current Solution State:\n- IFR-2 Recap: [Current IFR-2 formulation]\n- Resource Status: [List verified available SFR from Part 4]\n- Gap Analysis: [What's missing for ideal solution]\n\n3. Standards Application:\nApplicable Standards: [Standard #]: [Standard description]\n\n4. Additive Implementation Plan:\nMinimal Additive Strategy:\n- Substance/Field: [ ]\n- Quantity: [ ]\n- Localization: [ ]\n- Control Method: [ ]\n\nRules:\n1. Priority Order:\n   First reapply standards to refined resources\n   Then consider minimal additives\n   Document necessity for any additions\n2. Additive Constraints:\n   Smallest effective amount\n   Most localized application\n   Simplest control mechanism\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        7920,
+        432
+      ],
+      "id": "b90b0ec2-684e-48ab-ba91-2cfe07c97eb5",
+      "name": "5_1_standarts_application",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Instructions>\nThis is step 5.2. of ARIZ-85-V.\nIdentify and adapt non-standard solutions from previously solved problems with similar physical contradictions.\nUse IFR-2 from the block above.\n\n1. Physical Contradiction Analysis:\nCore Contradiction:\n- \"[Parameter A] must be [state X] to achieve [function 1], but must be [state Y] to achieve [function 2]\"\nContradiction Type: [Space/Time/Structure/Other] domain contradiction\n\nExample of graphical representation:\ngraph LR\n  A[Physical Contradiction] --> B[Space]\n  A --> C[Time]\n  A --> D[Structure]\n  A --> E[Condition]\n\n2. Analogy Identification\nSearch Criteria: Similar parameter fluctuation, Matching contradiction type, Comparable state requirements\nCandidate Analogies:\n1. [Solved Problem A]: [Brief description]\n2. [Solved Problem B]: [Brief description]\n\n3. Solution Adaptation:\nSelected Analogy: [Problem X]\nOriginal Solution: [Key mechanism]\nAdapted Solution: [Modified for current context]\n\nRules:\n1. Focus on Physical Essence:\n   Ignore superficial differences\n   Match core parameter requirements\n   Verify contradiction alignment\n2. Adaptation Guidelines:\n   Maintain solution principle\n   Adjust for OZ/OT constraints\n   Respect SFR limitations\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        8224,
+        432
+      ],
+      "id": "f96239ef-5615-42cb-89f0-f47925245a04",
+      "name": "5_2_analogues_solution_transfer",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Instructions>\nThis is step 5.3. of ARIZ-85-V.\nResolve physical contradictions using standardized transformations from Table 2 (\"Resolving Physical Contradictions\") to eliminate the core physical contradiction while maintaining maximum alignment with IFR-2.\nUse IFR-2 from the block above.\n\n1. Contradiction Restatement:\nPhysical Contradiction: \"[Parameter] must be [State A] to [Function 1] and [State ¬A] to [Function 2]\"\nIFR-2 Alignment Check: [How current formulation matches IFR-2 requirements]\n\n2. Transformation Selection:\nApplicable Transformations (Table 2):\n- [Separation in Space]: [Application plan]\n- [Separation in Time]: [Application plan]\n- [Conditional Separation]: [Application plan]\n- [System Transition]: [Application plan]\n\n3. Resource mapping:\n- Replace generic solutions with available VPR from Part 4\n\n4. Solution Validation:\nRule Compliance Check:\n- IFR Consistency: [% match with ideal solution]\n- Resource Usage: [SFR optimization status]\n- Simplicity: [Complexity rating 1-5]\n\nRules:\n1. IFR Alignment Principle (Rule 11):\n   Accept only ≥80% IFR-compliant solutions\n   Reject solutions requiring major new subsystems\n   Prioritize self-regulating mechanisms\n2. Transformation Priority:\n   Spatial separation, Temporal separation, Structural separation, System evolution\n\nTable 2 Transformations:\n1. Spatial Separation: Different states in different zones\n2. Temporal Separation: State switching over time\n3. Conditional Separation: Property change under conditions\n4. System Transition: Transition to higher-level system\n\nSolution Quality Criteria:\n- No new substance introduction\n- Uses existing energy flows\n- Maintains self-regulation\n- Requires minimal control\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        8544,
+        432
+      ],
+      "id": "cb7ebdb3-71f1-4898-ab93-f9990321a947",
+      "name": "5_3_resolving_physical_contradictions",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Substance Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance Field Resources>\n\n<Gap Analysis>\n{{ $('4_2_step_back_from_ifr').first().json.response }}\n</Gap Analysis>\n\n<Instructions>\nThis is step 5.4. of ARIZ-85-V.\nResolve the physical contradiction by applying relevant physical effects from the \"Index of Physical Effects and Phenomena\" while maintaining maximum alignment with IFR.\nUse Substance Field Resources from the block above.\n\n1. Contradiction Mapping:\nPhysical Contradiction: [Parameter] must be [State A] to [Function 1] and [State ¬A] to [Function 2]\nEffect Categories: [Category X] effects for [parameter] control, [Category Y] effects for state switching\n\n2. Effect Selection\nCandidate Effects:\n- [Effect A]: [Brief description]\n- [Effect B]: [Brief description]\n- [Effect C]: [Brief description]\n\n3. Implementation Plan:\n- Selected Effect: [Effect Name]\n- Application Method: [How to implement]\n- Resource Alignment: [SFR utilization]\n\nRules:\n1. Effect Matching Criteria:\n   Direct parameter control capability\n   Compatible with OZ/OT constraints\n   Minimal energy requirements\n2. Implementation Principles:\n   Prefer reversible effects\n   Use existing fields/substances\n   Maximize self-regulation\n\nCommon Effect Categories:\nField-responsive materials, Phase change phenomena, Surface/interfacial effects, Energy conversion effects\n\nValidation Checklist:\n- Effect solves both contradiction states\n- Implementation uses ≥70% existing SFR\n- Control method fits OT constraints\n- No secondary contradictions introduced\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        8864,
+        432
+      ],
+      "id": "a6ca9dbe-41a2-46b1-8aaf-472dc537e925",
+      "name": "5_4_derived_substance_solutions",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<Physical Solution and Working Principles>\n{{ $('5_4_derived_substance_solutions').first().json.response }}\n</Physical Solution and Working Principles>\n\n<Instructions>\nThis is step 6.1. of ARIZ-85-V.\nTransform a validated physical solution into a technical implementation by defining the working principle and schematic representation.\nUse Physical Solution and Working Principles (results of Part 5) from the blocks above.\n\n1. Solution Components Mapping:\nTechnical Requirements: [Functional requirement 1], [Functional requirement 2], [Operational constraint]\n\n2. Technical Realization:\n- By utilizing [physical effect] on [material/structure], the system achieves [function] through [action mechanism].\nKey Components:\n- [Component A]: [Function]\n- [Component B]: [Function]\n- [Control Mechanism]: [Type]\n\n3. Schematic Representation\nDiagram Elements:\n- [Main functional block]\n- [Energy/material flows]\n- [Control signals]\n- [Critical interfaces]\n\nRules:\n1. Minimalism Principle:\n   Use fewest components possible\n   Maximize multi-functionality\n   Eliminate auxiliary systems\n2. Implementation Guidelines:\n   Prefer passive over active components\n   Use existing system elements\n   Maintain solution reversibility\n\nValidation Checklist:\n- All physical effects properly embodied\n- No contradiction reintroduction\n- IFR principles maintained\n- Resource utilization optimized\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        9184,
+        608
+      ],
+      "id": "2c80f0b6-1128-4783-95d1-578bf14a33a1",
+      "name": "6_1_solution_conversion",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').item.json.response }}\n</IFR-2>\n\n<Instructions>\nThis is step 6.2. of ARIZ-85-V.\nWhen no solution is found, verify if the original problem combines multiple distinct tasks and decompose it into fundamental sub-problems.\nMake Technical Problem (TP) from original problem (if needs).\nStrategically redefine the TP by shifting system boundaries or eliminating core contradictions through functional transformation.\nUse Original Problem and IFR-2 from the blocks above.\n\n1. Problem Analysis\nSuspected Combinations:\n- [Task A] + [Task B]\n- [Process Step X] + [Process Step Y]\n\n2. Decomposition\nSub-Problems Identified:\n- Primary: [Core technical challenge]\n- Secondary: [Supporting challenges]\n- Auxiliary: [Implementation details]\n\n3. Priority Setting\nCritical Path: [Sub-problem] is key because [reason]\n\n4. Problem → Non-Problem Transformation:\n- Define if problem can be solved by transformation of any properties / parts / conditions of the system / subsystem / supersystem or transfer functions between it.\n\nSolution Strategy: Solve [primary] first, then address [secondary] if needed\n\nRules:\n1. Decomposition Criteria:\n   Separate by physical contradictions\n   Isolate core technical functions\n   Distinguish process stages\n2. Priority Principles:\n   Solve the contradiction-bearing sub-problem first\n   Address most resource-constrained aspect\n   Eliminate root causes before symptoms\n\nValidation Checklist:\n- Each sub-problem contains ≤1 physical contradiction\n- Sub-problems are technically distinct\n- Primary problem drives solution feasibility\n- Original scope preserved in totality\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        9488,
+        608
+      ],
+      "id": "329e9ba4-5c60-490b-968f-0f9021b3af9f",
+      "name": "6_2_problem_decomposition",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').item.json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').item.json.response }}\n</IFR-2>\n\n<Technical Contradictions>\n{{ $('1_3_technical_contradictions').item.json.response }}\n</Technical Contradictions>\n\n<Instructions>\nThis is step 6.3. of ARIZ-85-V.\nWhen no solution is found, revisit and select a different Technical Contradiction (TP) from Step 1.4 to fundamentally reframe the problem.\nUse the blocks above for Original Problem, IFR-2, TC-1 and TC-2 (from Technical Contradictions).\n\n1. Current Impasse Analysis\nFailed Approach: Original TP, Reason for failure\nAlternative TP Candidate: [New TP formulation]\n\n2. Problem Reframing\nNew Perspective: Instead of [original approach], achieve [function] by [alternative principle]\nSystem Impact: Eliminated component, Simplified process, New advantage\n\n3. Standard Solution Alignment\nApplicable Standards: [Standard #]: [Brief description]\nImplementation Path: [How standard applies to new TP]\n\nRules:\nReframing Principles:\n- Target measurement → elimination (Standard 4.1.1)\n- Control → self-regulation\n- Separation → integration\nSelection Criteria:\n- Choose TP allowing maximal simplification\n- Prefer contradictions enabling autonomous function\n- Eliminate most complex system component\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        9792,
+        608
+      ],
+      "id": "3cb58fee-a860-4be1-b828-ac9ab722f97e",
+      "name": "6_3_alternative_technical_contradiction",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').item.json.body.user_message }}\n</Problem>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').item.json.response }}\n</IFR-2>\n\n<Technical Contradictions>\n{{ $('1_3_technical_contradictions').item.json.response }}\n</Technical Contradictions>\n\n<Instructions>\nThis is step 6.4. of ARIZ-85-V.\nWhen no solution is found, systematically reformulate the mini-problem by expanding system boundaries to incorporate supersystem elements.\nAscending to higher system levels (supersystem → super-supersystem) until solvable contradictions emerge.\nUse the blocks above for Original Problem, IFR-2, TC-1 and TC-2 (from Technical Contradictions).\n\n1. Current Limitation Analysis\nOriginal System Boundaries: [Components in current formulation]\nCritical Constraint: [Parameter] cannot be improved because [reason]\n\n2. Supersystem Expansion\nImmediate Supersystem: [Containing system + adjacent systems]\nAvailable Resources:\n- [Resource A] with [capability]\n- [Resource B] with [capability]\n\n3. System Hierarchy\n[Original System] -> [Supersystem] -> [Super-Supersystem] -> [Megasystem]\n\n4. Reformulated Problem\nHow can [supersystem_n] provide [function] without [contradiction] while utilizing [available_resources]?\nNew Mini-Problem: How to achieve [original function] by utilizing [supersystem elements]?\nKey Integration: [Supersystem component] can provide [function] through [mechanism]\n\nRules:\n1. Expansion Principles:\n   Incorporate adjacent functional systems\n   Utilize shared substances/energy flows\n   Combine multiple functions in one element\n2. Validation Criteria:\n   At least 2x resource improvement\n   No new fundamental constraints\n   Simplified overall architecture\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        10112,
+        608
+      ],
+      "id": "a3429436-4c65-4626-8341-07035be862b4",
+      "name": "6_4_supersystem_reformulation",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').item.json.body.user_message }}\n</Problem>\n\n<Physical Solution and Technical Realization>\n{{ $('6_1_solution_conversion').item.json.response }}\n</Physical Solution and Technical Realization>\n\n<Instructions>\nThis is step 7.1. of ARIZ-85-V.\nVerify and refine the technical solution by eliminating introduced substances/fields through SFR utilization and implementing self-regulating substances where possible.\nMaximize usage of self-regulating substances and fields and minimize the use of external substances/fields.\nUse Physical Solution and Technical Realization (from stage 6.1) from the blocks above.\n\n1. Introduced Elements Audit:\nAnalyse the VPR and its utilization in the solution.\n\n2. Smart material implementation.\nSFR Replacement Options:\n- [Substance A] → [Existing/derived SFR]\n- [Field B] → [Existing field interaction]\nSelf-Regulating Alternatives:\n- [Component X] → [Substance with property change at [condition]]\n- [Control Y] → [Auto-responsive mechanism]\nAnalyse Self-Regulation Pathways:\n- Temperature-Triggered: Shape Memory Alloys (SMA), Thermochromics\n- Field-Responsive: Magnetorheological Fluids, Electroluminescent Polymers\n- Phase-Change: Analyze the solution and identify potential phase changes of materials: Solid -> Liquid -> Supercritical -> Foam\n\n3. Solution Refinement:\nDescribe optimised [Parameter] with it [Before] and [After] condition and final [Improvement]\nImprovements:\n- [Removed element] → [SFR alternative]\n- [Added self-regulation] at [trigger condition]\n\nRules:\n1. Self-Regulating Criteria:\n   Property change matches operational conditions\n   No external control needed\n   Fully reversible behavior\n2. Substitution Principles:\n   Replace additives with byproducts first\n   Use phase changes over new substances\n   Leverage existing field interactions\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        10432,
+        768
+      ],
+      "id": "e3df29aa-6b12-4c60-a30f-add8522195ac",
+      "name": "7_1_solution_control",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').item.json.body.user_message }}\n</Problem>\n\n<Optimized Solution>\n{{ $('6_1_solution_conversion').item.json.response  }}\n</Optimized Solution>\n\n<Solution Refinement>\n{{ $('7_1_solution_control').first().json.response }}\n</Solution Refinement>\n\n<Instructions>\nThis is step 7.2. of ARIZ-85-V.\nConduct a thorough verification of the proposed solution against core TRIZ principles using standardized control questions.\nUse Optimized Solution and Solution Refinement from the blocks above.\n\n1. IFR-1 Compliance Check\nAutonomy Checklist:\n- Self-executes primary function without external control\n- Maintains performance during system perturbations\n\n2. Physical Contradiction Resolution:\nOriginal Contradiction: [Parameter] must be [A] and [¬A]\nResolution Method: [How solution bridges opposites]\nVerification: [1/0] Both states achieved, [1/0] No compromise made\n\n3. Control Element Analysis:\nControllable Component: [Name]\nControl Method: [Automatic/Self-regulating] via [mechanism]\nVerification: [1/0] Precise operation, [1/0] No human intervention\n\n4. Cyclical Performance:\nSingle-Cycle Behavior: [Description]\nMulti-Cycle Adaptation: [Durability/Reset mechanism]\nVerification: [1/0] Consistent performance, [1/0] No degradation\n\nDecision Criteria:\n- Return to Step 1.1 if any 0\n- Proceed only if all 1\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        10784,
+        768
+      ],
+      "id": "7d289407-a6bd-4c96-ae1e-890512e004c8",
+      "name": "7_2_solution_evaluation",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').item.json.body.user_message }}\n</Problem>\n\n<Solution Refinement>\n{{ $('7_1_solution_control').first().json.response }}\n</Solution Refinement>\n\n<Instructions>\nThis is step 7.3. of ARIZ-85-V.\nSystematically validate the novelty of the proposed technical solution through comprehensive patent analysis before proceeding to implementation.\nUse Solution Refinement (from stage 7.2) from the block above.\n\nImplementation Framework\n\n1. Solution Characterization.\nExtract core innovation components.\nCore Innovation: [Technical effect] achieved by [novel mechanism].\nKey Differentiators:\n1. [Feature A] with [unique implementation]\n2. [Component B] performing [new function]\n3. [Process C] enabling [unconventional result]\n\n2. Patent Search Strategy:\nSearch Keywords:\n1. [Technical term 1] + [Innovation aspect 1]\n2. [Technical term 2] + [Innovation aspect 2]\nClassification Codes: IPC: [Relevant codes], CPC: [Relevant codes]\n\n3. Novelty Assessment:\nPrior Art Check:\n1. [Closest patent 1]: Differs by [aspect]\n2. [Closest patent 2]: Lacks [feature]\nNovelty Conclusion: [1/0] Novel because [technical distinction]\n\nRules:\n1. Search Depth:\n   Minimum 3 patent databases\n   20-year lookback period\n   International coverage\n2. Novelty Criteria:\n   New technical means\n   Unconventional combination\n   Unexpected effect\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        11136,
+        768
+      ],
+      "id": "b30d19f3-0a07-4cff-83d4-e052904820c3",
+      "name": "7_3_patent_novelty_verification",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Problem>\n{{ $('Webhook').item.json.body.user_message }}\n</Problem>\n\n<Solution Refinement>\n{{ $('7_1_solution_control').first().json.response }}\n</Solution Refinement>\n\n<Instructions>\nAnswer in russian.\nThis is step 7.4. of ARIZ-85-V.\nSystematically identify and categorize all potential sub-tasks that will emerge during technical development of the solution.\nUse Solution Refinement from the block above.\n\nImplementation Framework:\n\n1. Technical Development Analysis:\nCore Innovation: [Brief description of key technical idea]\nImplementation Challenges:\n1. [Physical realization challenge]\n2. [Control integration issue]\n3. [Performance optimization need]\n\n2. Sub-Task Categorization:\nInventive Sub-Tasks:\n1. [Novel component] requires [inventive development]\n2. [Unconventional process] needs [new method]\nEngineering Sub-Tasks:\n1. [Component A] integration with [existing system]\n2. [Parameter B] optimization for [condition C]\nCalculation Sub-Tasks:\n1. [Performance metric] modeling under [scenarios]\n2. [Material property] verification at [conditions]\nOrganizational Sub-Tasks:\n1. [Specialist type] recruitment for [task]\n2. [Equipment] procurement timeline\n\n3. Priority Assessment:\nCritical Path:\n1. [Most challenging inventive task]\n2. [Highest-risk engineering task]\nDependencies: [Task X] must precede [Task Y] because [reason]\n\nRules:\n1. Exhaustive Identification:\n   Minimum 3 sub-tasks per category\n   Cover all system interfaces\n   Include verification needs\n2. Specificity Requirements:\n   Avoid generic descriptions\n   Quantify where possible\n   Note interdisciplinary needs\n</Instructions>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        11440,
+        768
+      ],
+      "id": "b7273f45-7098-49b5-bd8c-5a30b11f96f6",
+      "name": "7_4_sub_tasks_identification",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        14784,
+        416
+      ],
+      "id": "6d7a39d2-8b42-4f3d-a2e2-5a8e4c75e398",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2-Max",
+        "prompt": "=/no_think\n\n<Original Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Original Problem>\n\n<Mini-Problem Statement>\n{{ $('1_1_mini_task').first().json.response }}\n</Mini-Problem Statement>\n\n<Conflicting Pair>\n{{ $('1_2_conflicting_pair').first().json.response }}\n</Conflicting Pair>\n\n<Selected Technical Contradiction>\n{{ $('1_4_choose_technical_contradictions').first().json.response }}\n</Selected Technical Contradiction>\n\n<Escalated Contradiction>\n{{ $('1_5_escalate_technical_contradictions').first().json.response }}\n</Escalated Contradiction>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n<Substance-Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance-Field Resources>\n\n<IFR-1>\n{{ $('3_1_define_ifr_1').first().json.response }}\n</IFR-1>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Little People Modeling Solution>\n{{ $('4_1_little_people_modeling').first().json.response }}\n</Little People Modeling Solution>\n\n<Physical Solution Approach>\n{{ $('4_3_substance_resource_mixtures').first().json.response }}\n{{ $('4_4_void_utilization').first().json.response }}\n{{ $('4_5_derived_substance_solutions').first().json.response }}\n{{ $('4_6_electric_field_solutions').first().json.response }}\n</Physical Solution Approach>\n\n<Standards Applied>\n{{ $('5_1_standarts_application').first().json.response }}\n{{ $('5_3_resolving_physical_contradictions').first().json.response }}\n</Standards Applied>\n\n<Technical Realization>\n{{ $('6_1_solution_conversion').first().json.response }}\n</Technical Realization>\n\n<Solution Refinement>\n{{ $('7_1_solution_control').first().json.response }}\n</Solution Refinement>\n\n<Solution Evaluation>\n{{ $('7_2_solution_evaluation').first().json.response }}\n</Solution Evaluation>\n\n<Sub-tasks Identified>\n{{ $('7_4_sub_tasks_identification').first().json.response }}\n</Sub-tasks Identified>\n\n\n<Role>\nYou generate FRONTIER solutions at the edge of current technical capabilities. These require research, development of unproven combinations, or novel application of emerging technologies. High risk, high potential reward.\n</Role>\n\n<Instruction>\nAnswer in Russian.\n\nAnalyse information from:\n- Original Problem\n- Mini-Problem Statement\n- Conflicting Pair\n- Selected Technical Contradiction\n- Escalated Contradiction\n- Operative Zone\n- Operative Time\n- Substance-Field Resources\n- IFR-1\n- IFR-2\n- Little People Modeling Solution\n- Physical Solution Approach\n- Standards Applied\n- Technical Realization\n- Solution Refinement\n- Solution Evaluation\n- Sub-tasks Identified\n\nGenerate 5 BREAKTHROUGH solutions that PUSH TECHNICAL BOUNDARIES. Each solution must:\n- Combine technologies in unprecedented ways\n- Apply emerging or cutting-edge developments (TRL 4-6)\n- Require significant R&D, testing, and validation\n- Challenge current assumptions about the problem\n- Offer order-of-magnitude improvement if successful\n\nPERMITTED:\n- Laboratory-proven technologies not yet in production\n- Novel material combinations or structures\n- Advanced algorithms (AI/ML, adaptive control)\n- Unconventional physics or chemistry applications\n- Bio-inspired or radically different architectures\n- Technologies from adjacent fields applied to this domain\n\nFORBIDDEN:\n- Pure science fiction (violates known physics)\n- Incremental improvements of existing solutions\n- Mere cost reductions or optimizations\n- Anything achievable with catalog components alone\n\n<Strict Constraints>\nTechnology Readiness Level: 4-6 (validated in lab, needs development)\nImplementation time: 1-3 years\nCost: Significant investment with uncertainty\nRisk: High (technical failure possible, requires mitigation)\nSuccess metric: 10x improvement potential or elimination of fundamental trade-off\n</Strict Constraints>\n\n<Output Format>\n1. [Solution Name]\n   Principle: [TRIZ principle number and name]\n   Concept: [Radical approach description - how it breaks current paradigm]\n   Technical foundation: [Emerging tech/recent research this builds on]\n   Development required: [Specific R&D challenges to solve]\n   Key uncertainty: [What must be proven for this to work]\n   Potential payoff: [Why this is worth the risk - transformative outcome]\n   Parallel: [Where similar frontier approach succeeded in different domain]\n\n[Repeat for 5 solutions]\n\nHighest potential: [Select one]\nIf successful, this eliminates: [Which fundamental constraint disappears]\n</Output Format>",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        12272,
+        1040
+      ],
+      "id": "fa1460d4-2f39-406e-bdf1-14abd93ef3db",
+      "name": "Stage 4: Breakthrough Solution generation",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2-Max",
+        "prompt": "=/no_think\n\n<Original Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Original Problem>\n\n<Mini-Problem Statement>\n{{ $('1_1_mini_task').first().json.response }}\n</Mini-Problem Statement>\n\n<Conflicting Pair>\n{{ $('1_2_conflicting_pair').first().json.response }}\n</Conflicting Pair>\n\n<Selected Technical Contradiction>\n{{ $('1_4_choose_technical_contradictions').first().json.response }}\n</Selected Technical Contradiction>\n\n<Escalated Contradiction>\n{{ $('1_5_escalate_technical_contradictions').first().json.response }}\n</Escalated Contradiction>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n<Substance-Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance-Field Resources>\n\n<IFR-1>\n{{ $('3_1_define_ifr_1').first().json.response }}\n</IFR-1>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Little People Modeling Solution>\n{{ $('4_1_little_people_modeling').first().json.response }}\n</Little People Modeling Solution>\n\n<Physical Solution Approach>\n{{ $('4_3_substance_resource_mixtures').first().json.response }}\n{{ $('4_4_void_utilization').first().json.response }}\n{{ $('4_5_derived_substance_solutions').first().json.response }}\n{{ $('4_6_electric_field_solutions').first().json.response }}\n</Physical Solution Approach>\n\n<Standards Applied>\n{{ $('5_1_standarts_application').first().json.response }}\n{{ $('5_3_resolving_physical_contradictions').first().json.response }}\n</Standards Applied>\n\n<Technical Realization>\n{{ $('6_1_solution_conversion').first().json.response }}\n</Technical Realization>\n\n<Solution Refinement>\n{{ $('7_1_solution_control').first().json.response }}\n</Solution Refinement>\n\n<Solution Evaluation>\n{{ $('7_2_solution_evaluation').first().json.response }}\n</Solution Evaluation>\n\n<Sub-tasks Identified>\n{{ $('7_4_sub_tasks_identification').first().json.response }}\n</Sub-tasks Identified>\n\n<Role>\nYou generate ENGINEERING solutions using established, proven technologies. These are standard technical implementations with known reliability. NO experimental tech, NO bleeding edge, NO scientific uncertainty.\n</Role>\n\n<Instruction>\nAnswer in Russian.\n\nAnalyse information from:\n- Original Problem\n- Mini-Problem Statement\n- Conflicting Pair\n- Selected Technical Contradiction\n- Escalated Contradiction\n- Operative Zone\n- Operative Time\n- Substance-Field Resources\n- IFR-1\n- IFR-2\n- Little People Modeling Solution\n- Physical Solution Approach\n- Standards Applied\n- Technical Realization\n- Solution Refinement\n- Solution Evaluation\n- Sub-tasks Identified\n\nGenerate 5 GOOD solutions using PROVEN, COMMERCIALLY AVAILABLE technologies. Each solution must:\n- Use existing, mass-produced components\n- Follow established engineering practices\n- Have documented reliability in similar applications\n- Require only standard technical skills for implementation\n- Be manufacturable/procurable within reasonable timeframe\n\nPERMITTED:\n- Standard industrial components (sensors, actuators, materials)\n- Established manufacturing methods (CNC, 3D printing, molding)\n- Proven software/hardware platforms\n- Catalog items from suppliers\n- Conventional engineering design\n\nFORBIDDEN:\n- Technologies in R&D or early adoption phase\n- Custom scientific equipment\n- Unproven combinations without precedent\n- Concepts requiring new physics or materials science\n- Solutions with unquantified risks\n\n<Strict Constraints>\nTechnology Readiness Level: 7-9 (proven in operational environment)\nImplementation time: Weeks to months\nCost: Moderate, predictable, budgetable\nRisk: Low (known failure modes, manageable)\n</Strict Constraints>\n\n<Output Format>\n1. [Solution Name]\n   Principle: [TRIZ principle number and name]\n   Technical approach: [Standard engineering solution description]\n   Key components: [Specific proven technologies/components]\n   Development needed: [Standard design/integration work only]\n   Implementation: [Weeks/months, standard process]\n   Reliability basis: [Precedent: where this approach already works]\n\n[Repeat for 5 solutions]\n\nBest for immediate implementation: [Select one]\nReason: [Why this balances reliability, cost, and speed optimally]\n</Output Format>",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        12560,
+        1040
+      ],
+      "id": "095159a6-4861-4653-bb87-c98e196b0e43",
+      "name": "Stage 4: Good Solution generation",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2-Max",
+        "prompt": "=/no_think\n\n<Original Problem>\n{{ $('Webhook').first().json.body.user_message }}\n</Original Problem>\n\n<Mini-Problem Statement>\n{{ $('1_1_mini_task').first().json.response }}\n</Mini-Problem Statement>\n\n<Conflicting Pair>\n{{ $('1_2_conflicting_pair').first().json.response }}\n</Conflicting Pair>\n\n<Selected Technical Contradiction>\n{{ $('1_4_choose_technical_contradictions').first().json.response }}\n</Selected Technical Contradiction>\n\n<Escalated Contradiction>\n{{ $('1_5_escalate_technical_contradictions').first().json.response }}\n</Escalated Contradiction>\n\n<Operative Zone>\n{{ $('2_1_define_operative_zone').first().json.response }}\n</Operative Zone>\n\n<Operative Time>\n{{ $('2_2_defina_operative_time').first().json.response }}\n</Operative Time>\n\n<Substance-Field Resources>\n{{ $('2_3_define_substance_field_resources').first().json.response }}\n</Substance-Field Resources>\n\n<IFR-1>\n{{ $('3_1_define_ifr_1').first().json.response }}\n</IFR-1>\n\n<IFR-2>\n{{ $('3_5_formulate_ifr_2').first().json.response }}\n</IFR-2>\n\n<Little People Modeling Solution>\n{{ $('4_1_little_people_modeling').first().json.response }}\n</Little People Modeling Solution>\n\n<Physical Solution Approach>\n{{ $('4_3_substance_resource_mixtures').first().json.response }}\n{{ $('4_4_void_utilization').first().json.response }}\n{{ $('4_5_derived_substance_solutions').first().json.response }}\n{{ $('4_6_electric_field_solutions').first().json.response }}\n</Physical Solution Approach>\n\n<Standards Applied>\n{{ $('5_1_standarts_application').first().json.response }}\n{{ $('5_3_resolving_physical_contradictions').first().json.response }}\n</Standards Applied>\n\n<Technical Realization>\n{{ $('6_1_solution_conversion').first().json.response }}\n</Technical Realization>\n\n<Solution Refinement>\n{{ $('7_1_solution_control').first().json.response }}\n</Solution Refinement>\n\n<Solution Evaluation>\n{{ $('7_2_solution_evaluation').first().json.response }}\n</Solution Evaluation>\n\n<Sub-tasks Identified>\n{{ $('7_4_sub_tasks_identification').first().json.response }}\n</Sub-tasks Identified>\n\n<Role>\nYou generate IMMEDIATE, ZERO-DEVELOPMENT solutions. These are organizational, procedural, or configurational fixes using only what already exists. NO new technology, NO R&D, NO engineering.\n</Role>\n\n<Instruction>\nAnswer in Russian.\n\nAnalyse information from:\n- Original Problem\n- Mini-Problem Statement\n- Conflicting Pair\n- Selected Technical Contradiction\n- Escalated Contradiction\n- Operative Zone\n- Operative Time\n- Substance-Field Resources\n- IFR-1\n- IFR-2\n- Little People Modeling Solution\n- Physical Solution Approach\n- Standards Applied\n- Technical Realization\n- Solution Refinement\n- Solution Evaluation\n- Sub-tasks Identified\n\nGenerate 5 TRIVIAL solutions using ONLY existing, immediately available means. Each solution must be implementable TODAY without:\n- Design work\n- Manufacturing or prototyping\n- New purchases (only existing inventory)\n- Technical development\n- Testing or validation\n\nPERMITTED approaches:\n- Reconfiguration of existing components\n- Operational procedure changes\n- Parameter adjustments (settings, positioning, timing)\n- Using existing items for non-standard purposes\n- Organizational or methodological changes\n\nFORBIDDEN:\n- Any \"development\", \"creation\", \"design\" of new elements\n- Technologies not already in user's possession\n- Physical modifications requiring tools/engineering\n- Concepts requiring feasibility studies\n\n<Strict Constraints>\nTechnology Readiness: Must exist in current environment\nImplementation time: Minutes to hours\nCost: Zero (using only what is already available)\nRisk: Minimal (proven, known elements)\n</Strict Constraints>\n\n<Output Format>\n1. [Solution Name]\n   Principle: [TRIZ principle number and name]\n   Action: [Specific immediate action - what EXACTLY to do right now]\n   Resources needed: [List ONLY items already available]\n   Time to implement: [Hours or less]\n   Limitation: [Why this is just a workaround, not ideal solution]\n\n[Repeat for 5 solutions]\n\nSummary: These solutions address symptoms immediately but don't resolve underlying contradictions.\n</Output Format>",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        12848,
+        1040
+      ],
+      "id": "05cc4b65-fb70-4773-aead-044c1ff87f6e",
+      "name": "Stage 4: Trivial Solution generation",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2-Max",
+        "prompt": "=/no_think\n\n<Breakthrough Ideas>\n{{ $('Stage 4: Breakthrough Solution generation').first().json.response }}\n</Breakthrough Ideas>\n\n<Good Ideas>\n{{ $('Stage 4: Good Solution generation').first().json.response }}\n</Good Ideas>\n\n<Trivial Ideas>\n{{ $('Stage 4: Trivial Solution generation').first().json.response }}\n</Trivial Ideas>\n\n<Role>\nPatent search query generator. Extract technical concepts from TRIZ solution ideas and convert to searchable patent queries.\n</Role>\n\n<Instruction>\nAnalyze solution descriptions from three categories and generate patent search queries.\n\n**From each idea extract:**\n- Core technology/method name\n- Key technical mechanism\n- Application domain\n- Distinctive feature\n\n**Generate 3 queries per idea:**\n1. **Broad** - General terms with synonyms\n2. **Technical** - Specific mechanism or component\n3. **Novelty** - Unique/differentiating aspect\n\n**Query construction:**\n- Use English for international databases\n- OR for synonyms: (drone OR UAV OR \"unmanned aerial vehicle\")\n- Quotes for exact phrases: \"quantum entanglement\"\n- Combine: (technology) AND (mechanism) AND (application)\n\n**Output structure:**\n\n{\n  \"breakthrough\": [\n    \"query 1\",\n    \"query 2\",\n    \"query 3\",\n    \"query 4\",\n    \"query 5\"...\n  ],\n  \"good\": [\n    \"query 1\",\n    \"query 2\",\n    \"query 3\"...\n  ],\n  \"trivial\": [\n    \"query 1\",\n    \"query 2\",\n    \"query 3\"...\n  ]\n}\n\n**Rules:**\n- Flat arrays only, no nested objects\n- 3+ queries per idea\n- All breakthrough ideas → \"breakthrough\" array\n- All good ideas → \"good\" array  \n- All trivial ideas → \"trivial\" array\n- Skip ideas without technical substance\n</Instruction>\n\n<Output Format>\nReturn ONLY valid JSON with three flat string arrays. No markdown, no comments, no explanations.\n</Output Format>",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        13184,
+        1040
+      ],
+      "id": "62925480-c5f2-4561-998d-9604699af7ea",
+      "name": "Generate Patent Queries",
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://patent_service:8000/search_by_output",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "output",
+              "value": "={{ $('Generate Patent Queries').first().json.response.replaceAll(\"```\", \"\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        13520,
+        1040
+      ],
+      "id": "0d563dd7-62ff-48d7-90da-f2f080e9d439",
+      "name": "Search Patents By Queries Output"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "# n8n Code Node\n# Входные данные: items[0].json содержит структуру с патентами\n\nimport json\n\ndef main():\n    # Получаем входные данные\n    input_data = items[0].json\n    \n    # Собираем все уникальные патенты из всех категорий\n    all_patents = []\n    seen_ids = set()\n    \n    # Проходим по всем категориям (breakthrough, good, trivial)\n    for category in ['breakthrough', 'good', 'trivial']:\n        if category in input_data:\n            # Каждая категория - список списков (групп)\n            for group in input_data[category]:\n                for patent in group:\n                    patent_id = patent.get('id', '')\n                    # Убираем дубликаты по ID\n                    if patent_id and patent_id not in seen_ids:\n                        seen_ids.add(patent_id)\n                        all_patents.append({\n                            'id': patent_id,\n                            'title': patent.get('title', 'Без названия'),\n                            'url': patent.get('url', '').strip(),\n                            'assignee': patent.get('assignee', ''),\n                            'score': patent.get('score', 0)\n                        })\n    \n    # Сортируем по score (убывание) и берем топ-30\n    all_patents.sort(key=lambda x: x['score'], reverse=True)\n    top_patents = all_patents[:30]\n    \n    # Формируем Markdown\n    markdown_lines = []\n    markdown_lines.append(f\"## Найдено патентов: {len(all_patents)} (показано топ-{len(top_patents)})\")\n    markdown_lines.append(\"\")\n    \n    for i, patent in enumerate(top_patents, 1):\n        # Очищаем URL от лишних пробелов\n        clean_url = patent['url'].replace('  ', ' ').strip()\n        \n        # Формируем строку: номер. [Название](URL) - ID\n        line = f\"{i}. [{patent['title']}]({clean_url}) — `{patent['id']}`\"\n        \n        # Добавляем правообладателя если есть\n        if patent['assignee']:\n            line += f\" ({patent['assignee']})\"\n        \n        markdown_lines.append(line)\n    \n    # Добавляем примечание если было обрезано\n    if len(all_patents) > 30:\n        markdown_lines.append(\"\")\n        markdown_lines.append(f\"*...и ещё {len(all_patents) - 30} патентов*\")\n    \n    # Формируем результат\n    result = {\n        \"markdown\": \"\\n\".join(markdown_lines),\n        \"total_found\": len(all_patents),\n        \"shown\": len(top_patents),\n        \"patents\": top_patents\n    }\n    \n    return [{\"json\": result}]\n\n# Выполняем\nreturn main()"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        13728,
+        1040
+      ],
+      "id": "d4526297-ffac-48eb-af2c-f1e7a14f1443",
+      "name": "Process Patents"
+    },
+    {
+      "parameters": {
+        "modelId": "GigaChat-2",
+        "prompt": "=/no_think\n\n<Breakthrough Ideas>\n{{ $('Stage 4: Breakthrough Solution generation').first().json.response }}\n</Breakthrough Ideas>\n\n<Good Ideas>\n{{ $('Stage 4: Good Solution generation').first().json.response }}\n</Good Ideas>\n\n<Trivial Ideas>\n{{ $('Stage 4: Trivial Solution generation').first().json.response }}\n</Trivial Ideas>\n\n<Role>\nYou are a TRIZ (Theory of Inventive Problem Solving) expert with excellent technical knowledge. Your task is write report with summary of all ideas, which was generated in previous stages.\n</Role>\n\n<Instruction>\n\n**Answer in russian**\n\nWrite final report with description of all generated ideas, defined in <Breakthrough Ideas>, <Good Ideas> and <Simple Ideas> and <Patents> in this order:\n1) Breakthroug\n2) Good\n3) Trivial\n4) {{ $('Process Patents').first().json.markdown }}\n\nNote, that input from 'Process Patents' already in markdown, and place it in answer as is, without additional braces (```), tags and else. Patents in output must be formatted ans links, for user comfort.\n\n</Instruction>\n",
+        "options": {},
+        "simplifyOutput": true
+      },
+      "type": "n8n-nodes-gigachat.gigaChat",
+      "typeVersion": 1,
+      "position": [
+        13920,
+        1040
+      ],
+      "id": "a1854ad6-59df-4743-a5b2-283e62124e9f",
+      "name": "ARIZ-85-V Summary",
+      "retryOnFail": true,
+      "credentials": {
+        "gigaChatApi": {
+          "id": "URKo6bFtJLlbYxH5",
+          "name": "GigaChat account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "1_1_mini_task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1_1_mini_task": {
+      "main": [
+        [
+          {
+            "node": "1_2_conflicting_pair",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1_2_conflicting_pair": {
+      "main": [
+        [
+          {
+            "node": "1_3_technical_contradictions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1_3_technical_contradictions": {
+      "main": [
+        [
+          {
+            "node": "1_4_choose_technical_contradictions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1_4_choose_technical_contradictions": {
+      "main": [
+        [
+          {
+            "node": "1_5_escalate_technical_contradictions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1_5_escalate_technical_contradictions": {
+      "main": [
+        [
+          {
+            "node": "1_6_formulate_task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1_6_formulate_task": {
+      "main": [
+        [
+          {
+            "node": "1_7_search_standart_solutions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2_1_define_operative_zone": {
+      "main": [
+        [
+          {
+            "node": "2_2_defina_operative_time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2_2_defina_operative_time": {
+      "main": [
+        [
+          {
+            "node": "2_3_define_substance_field_resources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1_7_search_standart_solutions": {
+      "main": [
+        [
+          {
+            "node": "2_1_define_operative_zone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2_3_define_substance_field_resources": {
+      "main": [
+        [
+          {
+            "node": "3_1_define_ifr_1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3_1_define_ifr_1": {
+      "main": [
+        [
+          {
+            "node": "3_2_improve_ifr_1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3_2_improve_ifr_1": {
+      "main": [
+        [
+          {
+            "node": "3_3_formulate_macro_level_ifr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3_3_formulate_macro_level_ifr": {
+      "main": [
+        [
+          {
+            "node": "3_4_formulate_micro_level_ifr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3_4_formulate_micro_level_ifr": {
+      "main": [
+        [
+          {
+            "node": "3_5_formulate_ifr_2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3_5_formulate_ifr_2": {
+      "main": [
+        [
+          {
+            "node": "3_6_standart_solutions_check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4_1_little_people_modeling": {
+      "main": [
+        [
+          {
+            "node": "4_2_step_back_from_ifr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4_2_step_back_from_ifr": {
+      "main": [
+        [
+          {
+            "node": "4_3_substance_resource_mixtures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4_3_substance_resource_mixtures": {
+      "main": [
+        [
+          {
+            "node": "4_4_void_utilization",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4_4_void_utilization": {
+      "main": [
+        [
+          {
+            "node": "4_5_derived_substance_solutions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4_5_derived_substance_solutions": {
+      "main": [
+        [
+          {
+            "node": "4_6_electric_field_solutions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4_6_electric_field_solutions": {
+      "main": [
+        [
+          {
+            "node": "4_7_field_responsive_substance_pairs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5_1_standarts_application": {
+      "main": [
+        [
+          {
+            "node": "5_2_analogues_solution_transfer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5_2_analogues_solution_transfer": {
+      "main": [
+        [
+          {
+            "node": "5_3_resolving_physical_contradictions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5_3_resolving_physical_contradictions": {
+      "main": [
+        [
+          {
+            "node": "5_4_derived_substance_solutions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6_1_solution_conversion": {
+      "main": [
+        [
+          {
+            "node": "6_2_problem_decomposition",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6_2_problem_decomposition": {
+      "main": [
+        [
+          {
+            "node": "6_3_alternative_technical_contradiction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6_3_alternative_technical_contradiction": {
+      "main": [
+        [
+          {
+            "node": "6_4_supersystem_reformulation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "7_1_solution_control": {
+      "main": [
+        [
+          {
+            "node": "7_2_solution_evaluation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "7_2_solution_evaluation": {
+      "main": [
+        [
+          {
+            "node": "7_3_patent_novelty_verification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "7_3_patent_novelty_verification": {
+      "main": [
+        [
+          {
+            "node": "7_4_sub_tasks_identification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "7_4_sub_tasks_identification": {
+      "main": [
+        [
+          {
+            "node": "Stage 4: Breakthrough Solution generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6_4_supersystem_reformulation": {
+      "main": [
+        [
+          {
+            "node": "7_1_solution_control",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5_4_derived_substance_solutions": {
+      "main": [
+        [
+          {
+            "node": "6_1_solution_conversion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4_7_field_responsive_substance_pairs": {
+      "main": [
+        [
+          {
+            "node": "5_1_standarts_application",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3_6_standart_solutions_check": {
+      "main": [
+        [
+          {
+            "node": "4_1_little_people_modeling",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stage 4: Breakthrough Solution generation": {
+      "main": [
+        [
+          {
+            "node": "Stage 4: Good Solution generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stage 4: Good Solution generation": {
+      "main": [
+        [
+          {
+            "node": "Stage 4: Trivial Solution generation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stage 4: Trivial Solution generation": {
+      "main": [
+        [
+          {
+            "node": "Generate Patent Queries",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Patent Queries": {
+      "main": [
+        [
+          {
+            "node": "Search Patents By Queries Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Patents By Queries Output": {
+      "main": [
+        [
+          {
+            "node": "Process Patents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Patents": {
+      "main": [
+        [
+          {
+            "node": "ARIZ-85-V Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ARIZ-85-V Summary": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ffcf10d7-1538-4e93-bfd7-977919f87e43",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "1dc344b625e5d453549c8897b7820bb4ec1d778a6118b2c3dc2074e872f376b0"
+  },
+  "id": "LDonyaAQAUbmA4a2",
+  "tags": []
+}

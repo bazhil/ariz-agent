@@ -1,0 +1,55 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<IFR-2>
+{{ $json.ifr_2 }}
+</IFR-2>
+
+<SFR>
+{{ $json.sfr }}
+</SFR>
+
+<Instructions>
+This is step 4.4. of ARIZ-85-V.
+Determine if the problem can be solved by replacing existing resource substances with emptiness (voids, gaps, or low-pressure zones) or by mixing substances with emptiness to achieve new functional properties.
+Use IFR-2 (Stage 3.5) and SFR (Stage 2.3) from the blocks above.
+
+1. Identify the Problem Constraints
+- What is the primary function of the current substance(s)?
+- What properties need improvement (e.g., weight, conductivity, transparency)?
+
+2. Identify Void Opportunities:
+Definition of "emptiness":
+- Vacuum (complete absence of matter).
+- Gas-filled voids (e.g., air pockets, bubbles).
+- Liquid-filled gaps (if the base material is solid).
+- Microstructural gaps (e.g., pores, lattice defects).
+Potential Void Applications:
+- Replace [Substance A] with void in [Operative Zone]
+- Create mixture of [Substance B] + void with [structure type]
+- Use void to modify [property] through [mechanism]
+
+3. Evaluate Void Effects / Possible Modifications:
+For each option: Property change, Implementation method, Connection to IFR-2
+
+4. Select Optimal Void Solution:
+- Chosen Approach: "[Description] because [justification]"
+- Expected Outcome: "[How it resolves the contradiction]"
+
+5. Check for Functional Improvements
+- Does the new structure retain necessary functionality?
+- Does it introduce beneficial new properties (e.g., lighter weight, better insulation)?
+
+6. Verify Feasibility
+- Can this be achieved without introducing new materials?
+- Does it avoid harmful side effects (e.g., structural weakness)?
+
+Rules:
+- Consider ALL void types (vacuum, pores, bubbles, etc.)
+- Void may contain other existing substances
+- Prioritize simplest void structures
+- Must enable required state switching
+</Instructions>

@@ -1,0 +1,35 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<IFR-2>
+{{ $json.ifr_2 }}
+</IFR-2>
+
+<Instructions>
+This is step 3.6. of ARIZ-85-V.
+Evaluate whether standard TRIZ solutions can resolve the physical problem formulated in IFR-2 from the block above.
+Apply TRIZ standard solutions to the IFR-2 statement before proceeding to Part 4.
+
+Standard Solutions Check:
+1. Attempted Standard: [Number + Name]
+   - Application: [How it addresses IFR-2]
+   - Result: [Solved / Not solved]
+2. [Repeat for other relevant standards]
+
+Standard Solutions to Consider:
+- Segmentation (1.1)
+- Field Modification (1.2)
+- Phase Transitions (2.2.1)
+- Self-Service (3.3.1)
+- Porous Materials (3.2.1)
+- Field Interaction (4.1)
+
+Rules:
+- MUST use standards that match IFR-2's autonomous requirement
+- MUST verify both state transitions (forward/reverse)
+- MUST use simple physics/chemistry principles
+- MUST maintain zero external control
+</Instructions>

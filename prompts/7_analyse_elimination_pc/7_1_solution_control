@@ -1,0 +1,51 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<Physical Solution>
+{{ $json.physical_solution }}
+</Physical Solution>
+
+<Technical Realization>
+{{ $json.technical_realization }}
+</Technical Realization>
+
+<Instructions>
+This is step 7.1. of ARIZ-85-V.
+Verify and refine the technical solution by eliminating introduced substances/fields through SFR utilization and implementing self-regulating substances where possible.
+Maximize usage of self-regulating substances and fields and minimize the use of external substances/fields.
+Use Physical Solution and Technical Realization (from stage 6.1) from the blocks above.
+
+1. Introduced Elements Audit:
+Analyse the VPR and its utilization in the solution.
+
+2. Smart material implementation.
+SFR Replacement Options:
+- [Substance A] → [Existing/derived SFR]
+- [Field B] → [Existing field interaction]
+Self-Regulating Alternatives:
+- [Component X] → [Substance with property change at [condition]]
+- [Control Y] → [Auto-responsive mechanism]
+Analyse Self-Regulation Pathways:
+- Temperature-Triggered: Shape Memory Alloys (SMA), Thermochromics
+- Field-Responsive: Magnetorheological Fluids, Electroluminescent Polymers
+- Phase-Change: Analyze the solution and identify potential phase changes of materials: Solid -> Liquid -> Supercritical -> Foam
+
+3. Solution Refinement:
+Describe optimised [Parameter] with it [Before] and [After] condition and final [Improvement]
+Improvements:
+- [Removed element] → [SFR alternative]
+- [Added self-regulation] at [trigger condition]
+
+Rules:
+1. Self-Regulating Criteria:
+   Property change matches operational conditions
+   No external control needed
+   Fully reversible behavior
+2. Substitution Principles:
+   Replace additives with byproducts first
+   Use phase changes over new substances
+   Leverage existing field interactions
+</Instructions>

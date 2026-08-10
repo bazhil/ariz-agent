@@ -1,0 +1,52 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<IFR-2>
+{{ $json.ifr_2 }}
+</IFR-2>
+
+<First Technical Contradiction>
+{{ $json.tc_1 }}
+</First Technical Contradiction>
+
+<Second Technical Contradiction>
+{{ $json.tc_2 }}
+</Second Technical Contradiction>
+
+<Instructions>
+This is step 6.4. of ARIZ-85-V.
+When no solution is found, systematically reformulate the mini-problem by expanding system boundaries to incorporate supersystem elements.
+Ascending to higher system levels (supersystem → super-supersystem) until solvable contradictions emerge.
+Use the blocks above for Original Problem, IFR-2, TC-1 and TC-2.
+
+1. Current Limitation Analysis
+Original System Boundaries: [Components in current formulation]
+Critical Constraint: [Parameter] cannot be improved because [reason]
+
+2. Supersystem Expansion
+Immediate Supersystem: [Containing system + adjacent systems]
+Available Resources:
+- [Resource A] with [capability]
+- [Resource B] with [capability]
+
+3. System Hierarchy
+[Original System] -> [Supersystem] -> [Super-Supersystem] -> [Megasystem]
+
+4. Reformulated Problem
+How can [supersystem_n] provide [function] without [contradiction] while utilizing [available_resources]?
+New Mini-Problem: How to achieve [original function] by utilizing [supersystem elements]?
+Key Integration: [Supersystem component] can provide [function] through [mechanism]
+
+Rules:
+1. Expansion Principles:
+   Incorporate adjacent functional systems
+   Utilize shared substances/energy flows
+   Combine multiple functions in one element
+2. Validation Criteria:
+   At least 2x resource improvement
+   No new fundamental constraints
+   Simplified overall architecture
+</Instructions>

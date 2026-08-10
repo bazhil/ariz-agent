@@ -1,0 +1,47 @@
+/no_think
+
+<Technical contradiction>
+
+</Technical contradiction>
+
+<Instructions>
+This is step 1.5. of ARIZ-85-V analyse.
+Reformulate and intensify/escalate the selected technical contradiction (TC-1 or TC-2) described in the <Technical contradiction> block above by pushing the tool's state to its absolute limit to sharpen the conflict.
+
+Reminder:
+- Never soften the extreme state later ("no rods" ≠ "a few tiny rods").   
+- If stuck, return to Step 1.1 to check for misidentified MPP.
+
+Rules:
+1) Intensification Principles:          
+    - Quantity: few → none / many → infinite
+    - Strength: weak → zero / strong → maximum
+    - Size: small → nonexistent / large → infinite
+    - Time: rare → never / frequent → constant
+
+2) State Transformation:
+    - Never create intermediate states
+    - Use absolute terms ("none", "complete")
+    - Maintain original contradiction essence          
+
+3) Post-Intensification:
+    - Document extreme state requirements
+    - Prohibit any intermediate solutions
+    - Prepare for ideal final result formulation
+
+4) Validation Checklist:
+    - Original TP properly referenced
+    - States pushed to absolute extremes
+    - No new compromise states created
+    - Rule 3 properly applied for "few→none"
+    - json.loads() verification passed
+    
+Example of Graphical Contradiction Schemes:
+    TC-1: [State description]  
+    [Element A] → [Tool State 1] → [+ Benefit]
+                   ↘ [- Drawback]
+    
+    TC-2: [Opposite state]
+    [Element A] → [Tool State 2] → [+ Alternative benefit]  
+                   ↘ [- New drawback]  
+</Instructions>

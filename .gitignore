@@ -1,0 +1,12 @@
+.env
+.idea/
+.vscode/
+.cursor/
+__pycache__/
+*.pyc
+.Python
+ollama-models/
+*.ods
+.DS_Store
+certs/
+n8n_data/

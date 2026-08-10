@@ -1,0 +1,12 @@
+/no_think
+
+<User message>
+{{ $json.query.user_message }}
+</User message>
+
+<Instructions>
+This is step 1.1. of ARIZ-85-V analyse.
+Analyse the problem described in the <User message> block above and, using the guidelines below, formulate a concise mini-problem statement that describes a technical system,
+its purpose, key components (including natural elements if applicable), and two technical contradictions (TC-1 and TC-2).
+The goal is to resolve the conflict with minimal changes to the system.
+</Instructions>

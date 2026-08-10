@@ -1,0 +1,47 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<IFR-1>
+{{ $json.ideal_final_result }}
+</IFR-1>
+
+<Operative Zone>
+{{ $json.operative_zone }}
+</Operative Zone>
+
+<Operative Time>
+{{ $json.operative_time }}
+</Operative Time>
+
+<Instructions>
+This is step 3.2. of ARIZ-85-V.
+Reformulate the Ideal Final Result (IFR-1) from the <IFR-1> block above to align with the Operative Time (OT) and Operative Zone (OZ) constraints by prohibiting new substances/fields and mandating use of existing Substance-Field Resources (SFR).
+
+Strengthened IFR-1:
+The [X-element replaced by SFR], without introducing new substances/fields:
+a) Eliminates [harmful action]
+b) Within [OT]
+c) In [OZ]
+d) While preserving [useful action].
+
+Rules:
+1. SFR Priority Order:
+   a) Tool's SFR → b) External environment → c) By-products → d) Product SFR (if allowed)
+2. Terminology:
+   Replace "X-element" with specific SFR (e.g., "air column" instead of abstract X)
+   Use simple, non-technical language (e.g., "lightning attractor" not "electrode")
+
+Multi-Screen Thinking:
+Consider parallel solutions across:
+- Supersystem (environment)
+- System (current components)
+- Subsystems (micro-level)
+
+Note:
+- For training purposes, attempt solutions along ALL SFR lines
+- In real applications, stop at first viable idea
+- Avoid technical jargon - describe functions, not mechanisms
+</Instructions>

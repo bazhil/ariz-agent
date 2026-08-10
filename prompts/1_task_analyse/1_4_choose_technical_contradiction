@@ -1,0 +1,35 @@
+/no_think
+
+<Problem>
+{{ $('1_1_mini_task').item.json.response }}
+</Problem>
+
+<Technical contradictions>
+{{ $('1_3_technical_contradictions').item.json.response }}
+</Technical contradictions>
+
+<Instructions>
+This is step 1.4. of ARIZ-85-V analyse.
+
+Analyse the problem from the <Problem> block above and the technical contradictions from the <Technical contradictions> block above. Identify the best technical contradiction to solve.
+Identify which technical contradiction (TC-1 or TC-2) best preserves the main production process (MPP) of the system.
+
+Special Cases:
+1) Measurement Systems:
+    - MPP is typically the end product's manufacturing process, not the measurement itself.
+    - Exception: Scientific measurement tasks where measurement is the end goal.
+
+Rules:
+1) MPP Identification:
+    - For measurement systems: parent process (Note 13)
+    - Use "for [action]ing [object]" format
+    - Exception: pure scientific measurement
+2) Contradiction Selection:
+    - Choose TP that preserves MPP
+    - Never compromise between states (Note 12)
+    - Accept secondary drawbacks
+3) Solution Requirements:
+    - Keep selected tool state
+    - Add opposite state's benefit
+    - No hybrid solutions
+</Instructions> 

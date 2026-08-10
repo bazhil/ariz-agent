@@ -1,0 +1,48 @@
+/no_think
+
+<Problem>
+{{ $json.problem }}
+</Problem>
+
+<IFR-2>
+{{ $json.ifr_2 }}
+</IFR-2>
+
+<Conflicting Pair>
+{{ $json.conflicting_pair }}
+</Conflicting Pair>
+
+<Instructions>
+This is step 4.1. of ARIZ-85-V.
+Use "Little People" modeling to visualize and resolve the physical contradiction through anthropomorphic representation.
+Use IFR-2 (Stage 3.5) and Conflicting pair (Stage 1.6) from the blocks above.
+
+1. Conflict Modeling (4.1a):
+Draw/Describe:
+- Identify the conflicting elements in the problem (e.g., tool, X-element)
+- [Element A] as group of little people doing [Conflict Action 1]
+- [Element B] as group doing [Conflict Action 2]
+- Highlight the incompatible behaviors causing conflict
+
+2. Conflict Resolution (4.1b):
+Modify to show:
+- Modify the initial scheme so that the "little men" act without conflict
+- Use sequential drawings if the scenario involves time-based changes
+- Highlight the difference between the "bad" (conflict) and "good" (resolved) actions
+- How groups could reorganize to eliminate conflict
+- Time-phased changes if needed (before/during/after conflict)
+- Different behaviors between OZ and non-OZ areas
+
+3. Technical Translation (4.1c):
+Convert to:
+- Physical mechanism suggested by the Little People solution
+- Translate the resolved "little men" scheme into a technical concept
+- Indicate possible physical changes (e.g., separation, modification of properties)
+- Required substance-field changes
+
+Rules:
+- ONLY model changeable elements (tool/X-element)
+- Show BOTH conflict and resolution states
+- Use SIMPLE, wordless visualization when possible
+- Maintain connection to IFR-2 requirements
+</Instructions>

@@ -1,0 +1,83 @@
+/no_think
+
+<Formulated task>
+{{ $('1_6_formulate_task').first().json.response }}
+</Formulated task>
+
+<Escalated technical contradiction>
+ {{ $('1_5_escalate_technical_contradiction').first().json.response }}
+</Escalated technical contradiction>
+
+
+<Instructions>
+This is step 1.7. of ARIZ-85-V analyse.
+Evaluate whether standard TRIZ solutions can resolve the formulated problem model from the <Formulated task> block above and the <Escalated technical contradiction> block above.
+Analyse:
+1) Conflict pair from the <Formulated task> block (step 1.6).
+2) Escalated technical contradiction from the <Escalated technical contradiction> block above.
+3) X-element requirements from the <Formulated task> block (step 1.6).
+
+If unsuccessful, proceed to Part 2 of ARIZ.
+Step 1: Prepare Problem Model for Standard Solutions
+
+Step 2: TRIZ Standards Classification
+Analyse which TRIZ standard solutions can be applied in this situation.
+
+Five Main Categories of Standards:
+1. Modify Systems
+    1.1 Segmentation
+    1.2 Field modification
+    1.3 Transition to micro-level
+
+2. Resolve Measurement Conflicts
+    2.1 Indirect measurement
+    2.2 Introduce feedback
+
+3. Simplify Systems
+    3.1 Discard/recover elements
+    3.2 Use porous materials
+
+4. Enhance Fields
+    4.1 Replace mechanical fields
+    4.2 Use phase transitions
+
+5. Prevent Harmful Effects
+    5.1 Introduce protective substances
+    5.2 Counteract with opposite fields
+
+Step 3: Application Process
+Describe how the standard could address the X-element requirement?
+
+Step 4: Decision Point
+
+Rules:
+1. Standard Evaluation:
+    - Check against current model (not original problem)
+    - Consider non-material solutions (from 1.6)
+    - Require ≥80% match to count as solved
+2. Decision Making:
+    - If solved: Can proceed to Part 7 (but should proceed to Part 2)
+    - If unsolved: Must proceed to Part 2
+    - Document solution and all attempted standards
+3. Quality Control:
+    - Verify model consistency with previous steps
+    - Ensure all standard categories were checked
+4. Key Considerations:
+    - Document All Attempts even if successful – other standards may yield better solutions.
+    - Non-Physical Solutions Preferred: Fields > substances > structural changes.
+    - Time Limit: Spend ≤10 min on standards check before moving to Part 2.
+5. Need Adaptations For:
+    - Chemical/biological systems?
+    - Software/process problems?
+    - High-risk constraints (medical/aerospace)?
+6. Validation Checklist:
+    - All standard categories checked:
+        Segmentation (1.1.x)
+        Field modification (1.2.x)
+        Phase transitions (2.2.x)
+        Self-service (3.3.x)
+    - Matches current problem model
+    - No compromise solutions
+    - Proper decision routing
+
+</Instructions>

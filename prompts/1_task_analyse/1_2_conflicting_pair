@@ -1,0 +1,45 @@
+/no_think
+
+<Problem>
+{{ $json.response }}
+</Problem>
+
+<Instructions>
+This is step 1.2. of ARIZ-85-V analyse.
+Analyse the problem and technical contradictions (TC-1 and TC-2) described in the <Problem> block above that need to be resolved.
+Identify and describe the conflicting pair of elements in the technical system: 
+the product (element to be processed) and the tool (element directly interacting with the product).
+
+Dual-State Tools: If the tool can exist in two distinct states (e.g., many/few, on/off), you must specify both states.
+Homogeneous Pairs: If there are multiple similar interacting pairs, just analyze one representative pair.
+Simple Language: Avoid technical jargon - use common terms (e.g., "conducting rod" instead of "lightning rod").
+Dual Elements: Note if either the product or tool consists of two elements that conflict with each other.
+
+Rules:
+1) Product Identification:   
+    - What is being processed/changed
+    - May be tool in detection tasks (Note 5)
+    - Specify all required states (Rule 1)
+2) Tool Identification:
+    - Directly interacts with product (Note 6)
+    - Not the whole machine, just active part
+    - Include all relevant states
+3) For Dual Elements (Note 7):
+    - Mark in "dual_elements" field
+    - Specify how they interfere
+
+Problem scope:
+- Start from inventive situation but add constraints
+- Sharpen contradictions (no compromises)
+- Maintain full system complexity despite "mini" label
+
+Components:
+- Must include both technical and natural elements
+- List all interacting components (3-5 total)
+
+Contradictions:
+TC-1 and TC-2 must be:
+- Same component
+- Opposite states
+- Mutually exclusive benefits
+</Instructions> 
