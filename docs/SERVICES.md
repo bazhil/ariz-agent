@@ -20,9 +20,6 @@
 ┌──────────┐   БД n8n
 │ Postgres │◄── n8n
 └──────────┘
-┌──────────┐   опционально для локальных моделей в UI
-│  Ollama  │
-└──────────┘
 ```
 
 ---
@@ -112,16 +109,25 @@
 
 ---
 
-## Ollama (опционально)
+## Ollama — не используется в этом прототипе
 
-**Роль в проекте:** локальный рантайм LLM для OpenWebUI. **Не используется** опубликованным workflow АРИЗ (там GigaChat через n8n). Профиль Compose: `ollama`.
+**Для ARIZAgent Ollama не нужен.**
+
+Open WebUI исторически часто ставят вместе с Ollama, но сам UI — отдельный сервис. С версии ~0.1.103 Ollama не является обязательным ([discussion](https://github.com/open-webui/open-webui/discussions/1287)).
+
+В нашем `docker-compose.yml`:
+
+- сервис Ollama **удалён**;
+- у OpenWebUI задано `ENABLE_OLLAMA_API=false`, чтобы UI не долбил `localhost:11434` и не сыпал ошибками в лог.
+
+Цепочка АРИЗ: **чат → Pipe → webhook n8n → GigaChat**. Локальные модели не участвуют.
+
+Если позже понадобятся локальные LLM в том же UI — поставьте Ollama отдельно и в Admin → Connections / env включите `ENABLE_OLLAMA_API=true` и `OLLAMA_BASE_URL` по [документации Open WebUI](https://docs.openwebui.com/) / [Ollama](https://github.com/ollama/ollama).
 
 | | |
 |--|--|
-| Сайт | https://ollama.com/ |
-| Документация | https://github.com/ollama/ollama/tree/main/docs |
-| Репозиторий | https://github.com/ollama/ollama |
-| Порт в этом compose | http://localhost:11435 → внутри контейнера 11434 |
+| Open WebUI + отключение Ollama | `ENABLE_OLLAMA_API=False` |
+| Документация Ollama (на будущее) | https://github.com/ollama/ollama |
 
 ---
 
@@ -136,10 +142,7 @@
 Примеры команд проекта:
 
 ```bash
-docker compose up -d
 docker compose --profile patents up -d
-docker compose --profile ollama up -d
-docker compose --profile patents --profile ollama up -d
 docker compose ps
 docker compose down
 ```

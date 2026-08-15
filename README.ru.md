@@ -38,7 +38,6 @@
 | PostgreSQL | БД для n8n | внутри сети Docker |
 | Qdrant *(опционально)* | Векторная БД патентов | http://localhost:6333 |
 | patent_service *(опционально)* | Загрузка CSV и поиск | http://localhost:8000 |
-| Ollama *(опционально)* | Локальные модели для UI | http://localhost:11435 |
 
 Ссылки на официальную документацию: [docs/SERVICES.md](docs/SERVICES.md).
 
@@ -88,13 +87,7 @@ docker compose --profile patents up -d
 
 Как искать и скачивать CSV в Google Patents и загрузить в векторную БД: [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md).
 
-### Локальный Ollama (профиль `ollama`)
-
-```bash
-docker compose --profile ollama up -d
-```
-
-Опубликованный workflow АРИЗ ходит в **GigaChat через n8n**, не в Ollama. Ollama нужен только если хотите локальные модели в интерфейсе OpenWebUI.
+**Ollama не нужен.** OpenWebUI поднимается с `ENABLE_OLLAMA_API=false`; чат АРИЗ идёт по цепочке **Pipe → n8n → GigaChat**, без локальных моделей.
 
 ---
 

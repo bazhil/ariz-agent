@@ -6,6 +6,7 @@ from qdrant_client.models import Distance, VectorParams, PointStruct
 
 from patent_service.config import QDRANT_URL, COLLECTION_NAME, VECTOR_SIZE
 
+
 logger = logging.getLogger(__name__)
 
 

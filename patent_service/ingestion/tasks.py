@@ -5,12 +5,12 @@ from typing import List, Tuple
 
 import pandas as pd
 
-from patent_service.csv_loader import read_patents_csv, row_to_payload
-from patent_service.patent_fetcher import fetch_patent_content
-from patent_service.chunker import chunk_patent_content
-from patent_service.embedder import embed
-from patent_service.qdrant_manager import QdrantPatentsManager
-from patent_service.storage import TaskResultStorage
+from patent_service.ingestion.csv_loader import read_patents_csv
+from patent_service.ingestion.patent_fetcher import fetch_patent_content
+from patent_service.ingestion.chunker import chunk_patent_content
+from patent_service.embeddings.embedder import embed
+from patent_service.storage.qdrant_manager import QdrantPatentsManager
+from patent_service.storage.task_storage import TaskResultStorage
 from patent_service.config import QDRANT_URL, COLLECTION_NAME
 
 logger = logging.getLogger(__name__)

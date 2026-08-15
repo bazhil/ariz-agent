@@ -1,4 +1,4 @@
-# ARIZAgent
+# ARIZ-Agent
 
 Open-source prototype: run a technical / inventive problem through **ARIZ-85-V** using a chat UI (**OpenWebUI**), an orchestration workflow (**n8n**), an LLM (e.g. **GigaChat**), and optionally a patent search demo (**Qdrant** + small FastAPI service).
 
@@ -36,7 +36,6 @@ User → OpenWebUI (chat + Pipe)
 | PostgreSQL | n8n database | internal |
 | Qdrant *(optional)* | Vector DB for patents | http://localhost:6333 |
 | patent_service *(optional)* | CSV load + semantic search | http://localhost:8000 |
-| Ollama *(optional)* | Local LLMs for OpenWebUI | http://localhost:11435 |
 
 Official documentation links: [docs/SERVICES.md](docs/SERVICES.md).
 
@@ -81,14 +80,7 @@ docker compose --profile patents up -d
 
 Then follow [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md) to export CSV from Google Patents and load it into Qdrant.
 
-### Optional: local Ollama
-
-```bash
-docker compose --profile ollama up -d
-# point OpenWebUI OLLAMA_BASE_URLS=http://ollama:11434 in compose/.env if needed
-```
-
-The published ARIZ workflow uses **GigaChat via n8n**, not Ollama. Ollama is only for optional local models in the UI.
+**Ollama is not required.** OpenWebUI runs with `ENABLE_OLLAMA_API=false`; the ARIZ chat goes through a **Pipe → n8n → GigaChat**, not through local models.
 
 ---
 
