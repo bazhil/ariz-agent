@@ -115,4 +115,6 @@ Russian questionnaire ready for Google Forms (TAM-oriented, usable for product f
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT-style license with a charitable contribution condition — see [LICENSE](LICENSE).
+
+The project is published as a non-commercial open prototype. Commercial use is allowed. If you make a financial profit from this software, you must donate a meaningful share of that profit to charities that fund medical treatment for children.

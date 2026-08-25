@@ -1,6 +1,10 @@
-MIT License
+MIT License with Charitable Contribution Condition
 
 Copyright (c) 2026 ARIZAgent contributors
+
+This Software is published as a non-commercial, open project. Commercial use
+is permitted. If you derive financial profit from the Software, you must give
+a share of that profit to charity as set out below.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -9,8 +13,20 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. The above copyright notice, this permission notice, and this license text
+   shall be included in all copies or substantial portions of the Software.
+
+2. Charitable contribution. The Software is provided first and foremost for
+   learning, research, and other non-commercial purposes. You may also use,
+   offer, and sell the Software or products and services based on it for
+   profit. If you obtain financial profit from such use (including, without
+   limitation, revenue from selling, licensing, hosting, consulting, or
+   otherwise monetizing the Software or a derivative thereof), you shall
+   donate a meaningful portion of that profit to one or more charitable
+   organizations that fund medical treatment for children. This condition
+   does not prohibit commercial activity; it only requires that those who
+   earn money from the Software share part of the proceeds with such
+   charities.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
