@@ -62,7 +62,7 @@ services:
       - ENABLE_FUNCTION_CALLING=true
       - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-change-me-webui-secret}
       - ENV=production
-      - WEBUI_NAME=ARIZAgent
+      - WEBUI_NAME=ariz-agent
       - WEBUI_URL=http://localhost:${OPENWEBUI_PORT:-3000}
       - WEBUI_AUTH=default
       - N8N_ENABLED=true
@@ -74,7 +74,6 @@ services:
       - ariz-network
 
   qdrant:
-    profiles: ["patents"]
     image: qdrant/qdrant:latest
     container_name: ariz-qdrant
     restart: unless-stopped
@@ -86,7 +85,6 @@ services:
       - ariz-network
 
   patent_service:
-    profiles: ["patents"]
     build:
       context: .
       dockerfile: patent_service/Dockerfile

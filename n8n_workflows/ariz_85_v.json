@@ -1,5 +1,5 @@
 {
-  "name": "ariz_85_v_3",
+  "name": "ariz_85_v",
   "nodes": [
     {
       "parameters": {
@@ -11,10 +11,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        240,
-        -192
+        2128,
+        -128
       ],
-      "id": "c127a6c2-927a-40ac-8ae9-c4d016b754f9",
+      "id": "9e10b2f9-3084-4af1-9e44-91dc5dfe02a1",
       "name": "Webhook",
       "webhookId": "aa3eb1a4-66a4-4f63-9354-065d103e0a0f"
     },
@@ -28,14 +28,14 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        800,
-        -192
+        2688,
+        -128
       ],
-      "id": "8b1df3b0-5dcf-40cc-8a0a-22b0b7524968",
+      "id": "735fcafa-7d68-4a88-b581-f4ef40af980c",
       "name": "1_1_mini_task",
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -50,15 +50,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        1376,
-        -192
+        3264,
+        -128
       ],
-      "id": "6fae2e7c-3b65-4950-ac87-dec7dc942b20",
+      "id": "845b7c10-2d7b-4371-8c09-e0bd90b3563e",
       "name": "1_3_technical_contradictions",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -73,15 +73,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        1088,
-        -192
+        2976,
+        -128
       ],
-      "id": "ef427e2a-5f75-4ae5-826e-60e0cc88c3f5",
+      "id": "97386db9-13c0-437b-a823-741cd68d3018",
       "name": "1_2_conflicting_pair",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -96,15 +96,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        1664,
-        -192
+        3552,
+        -128
       ],
-      "id": "a7879f36-1ab9-41e7-a94f-2757cf56f92b",
+      "id": "aea7b618-8875-45e4-a021-104fc0d5b4c0",
       "name": "1_4_choose_technical_contradictions",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -119,15 +119,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        1952,
-        -192
+        3840,
+        -128
       ],
-      "id": "e45e7c4e-ab8a-4021-8764-3557219ce4b3",
+      "id": "e1c2a0f9-5f54-4677-bd42-10d645b0fc18",
       "name": "1_5_escalate_technical_contradictions",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -142,15 +142,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        2256,
-        -192
+        4144,
+        -128
       ],
-      "id": "d0a737cb-250b-4124-b1b2-e58b36254f1d",
+      "id": "1ab07a24-7842-4c70-baf1-7f287320d370",
       "name": "1_6_formulate_task",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -165,15 +165,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        2560,
-        -192
+        4448,
+        -128
       ],
-      "id": "9c9a17ae-6008-4b05-bc32-8126e185816c",
+      "id": "e9ca3a3a-4bfc-41b3-b71b-ae6b4e88346a",
       "name": "1_7_search_standart_solutions",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -188,15 +188,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        2928,
-        -80
+        2688,
+        112
       ],
-      "id": "85021f16-577b-4cae-ba1b-56f1161afd7f",
+      "id": "7e29d18d-b21b-4bed-a93c-b6bfca80c548",
       "name": "2_1_define_operative_zone",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -211,15 +211,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        3232,
-        -80
+        2992,
+        112
       ],
-      "id": "f874f68c-662d-4277-ab1c-291430562fca",
+      "id": "bb218396-be7b-4efc-981c-4453ed8b0450",
       "name": "2_2_defina_operative_time",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -234,14 +234,14 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        3536,
-        -80
+        3296,
+        112
       ],
-      "id": "860253ca-5711-4b53-877d-fe49ff073fbe",
+      "id": "7e2b3446-119f-48de-9fdb-02db008aa22e",
       "name": "2_3_define_substance_field_resources",
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -256,15 +256,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        3856,
-        80
+        2704,
+        368
       ],
-      "id": "1b054c26-9212-42a7-b743-25d5258f80d1",
+      "id": "4a05ae8b-4d3f-4565-a4b6-69917dc60547",
       "name": "3_1_define_ifr_1",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -279,15 +279,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        4144,
-        80
+        2992,
+        368
       ],
-      "id": "5862ad4f-38df-4537-8b2a-f0c68e926817",
+      "id": "baf989c5-ecdd-4d0e-82b4-9d6e6421fea6",
       "name": "3_2_improve_ifr_1",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -302,15 +302,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        4448,
-        80
+        3296,
+        368
       ],
-      "id": "af64823c-d0d0-4635-b977-c581239ca044",
+      "id": "eba6ac86-e23e-4464-a692-a6e9cda3f6fe",
       "name": "3_3_formulate_macro_level_ifr",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -325,15 +325,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        4752,
-        80
+        3600,
+        368
       ],
-      "id": "d406ac3a-44f9-4cd2-8e51-7b869b5c18b0",
+      "id": "1cbd04d6-e5ff-4be0-b371-97f6a2eed676",
       "name": "3_4_formulate_micro_level_ifr",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -348,15 +348,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        5056,
-        80
+        3904,
+        368
       ],
-      "id": "bf10d5be-fd23-4d87-82ba-05a65beeb391",
+      "id": "6811ba46-be57-4cfa-af2e-c7f046e2f93b",
       "name": "3_5_formulate_ifr_2",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -371,15 +371,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        5360,
-        80
+        4208,
+        368
       ],
-      "id": "b417afc7-b36b-4805-a577-a59bad21b49f",
+      "id": "0d5b68da-e06a-489a-a0f2-779b2a263fc1",
       "name": "3_6_standart_solutions_check",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -394,15 +394,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        5680,
-        256
+        2688,
+        656
       ],
-      "id": "8633fb0b-d508-447a-92d9-269f6285d537",
+      "id": "df9fcf09-8ef6-4985-8831-49b2e3e82ed0",
       "name": "4_1_little_people_modeling",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -417,15 +417,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        6000,
-        256
+        3008,
+        656
       ],
-      "id": "144553e6-5cc9-4378-b02c-42d4943751af",
+      "id": "9b8f414b-be0d-4b85-8d22-18d4fc8e192e",
       "name": "4_2_step_back_from_ifr",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -440,15 +440,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        6320,
-        256
+        3328,
+        656
       ],
-      "id": "195ddfb8-aa33-4ec4-908e-92363c7444f4",
+      "id": "956fdfde-732e-4b9a-b7cb-d12af9afe8c6",
       "name": "4_3_substance_resource_mixtures",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -463,15 +463,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        6624,
-        256
+        3632,
+        656
       ],
-      "id": "0fe53129-cc6e-4c1b-9357-bfae9a4f1b32",
+      "id": "4f2c9bdb-d42e-4045-b94d-5e92aeb9d603",
       "name": "4_4_void_utilization",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -486,15 +486,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        6944,
-        256
+        3952,
+        656
       ],
-      "id": "a8def151-27cc-4355-8f0f-51d926c6e9ed",
+      "id": "6176d6ca-3058-4e48-a19c-c706663c73a5",
       "name": "4_5_derived_substance_solutions",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -509,15 +509,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        7264,
-        256
+        4272,
+        656
       ],
-      "id": "1f426f4d-a7fe-4b3e-aebf-962986cabf45",
+      "id": "82f98fe2-8c31-4583-a63f-bc1145e16d1b",
       "name": "4_6_electric_field_solutions",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -532,15 +532,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        7584,
-        256
+        4592,
+        656
       ],
-      "id": "78141512-aa60-47b0-9597-ecea8e9a9dab",
+      "id": "9db917f0-f593-4540-828f-cc83101123b6",
       "name": "4_7_field_responsive_substance_pairs",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -555,15 +555,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        7920,
-        432
+        2688,
+        928
       ],
-      "id": "b90b0ec2-684e-48ab-ba91-2cfe07c97eb5",
+      "id": "c3c40569-1fb5-4161-b8e3-a3c33a1322b0",
       "name": "5_1_standarts_application",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -578,15 +578,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        8224,
-        432
+        2992,
+        928
       ],
-      "id": "f96239ef-5615-42cb-89f0-f47925245a04",
+      "id": "6b5940e4-ce3c-4978-9aae-f82ff8b5f181",
       "name": "5_2_analogues_solution_transfer",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -601,15 +601,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        8544,
-        432
+        3312,
+        928
       ],
-      "id": "cb7ebdb3-71f1-4898-ab93-f9990321a947",
+      "id": "cf167bde-ddeb-44b7-b2d1-4b08285bda26",
       "name": "5_3_resolving_physical_contradictions",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -624,15 +624,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        8864,
-        432
+        3632,
+        928
       ],
-      "id": "a6ca9dbe-41a2-46b1-8aaf-472dc537e925",
+      "id": "1ae94f7b-e3a1-43d8-a2cb-085939843348",
       "name": "5_4_derived_substance_solutions",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -647,15 +647,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        9184,
-        608
+        2704,
+        1216
       ],
-      "id": "2c80f0b6-1128-4783-95d1-578bf14a33a1",
+      "id": "9eb6bdd2-a2c9-47d7-9190-f4f080854d23",
       "name": "6_1_solution_conversion",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -670,15 +670,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        9488,
-        608
+        3008,
+        1216
       ],
-      "id": "329e9ba4-5c60-490b-968f-0f9021b3af9f",
+      "id": "8f126efa-6c9a-4d6b-852a-9255cb76c692",
       "name": "6_2_problem_decomposition",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -693,15 +693,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        9792,
-        608
+        3312,
+        1216
       ],
-      "id": "3cb58fee-a860-4be1-b828-ac9ab722f97e",
+      "id": "b7dba539-7715-4ad0-9389-65c0f85bf70f",
       "name": "6_3_alternative_technical_contradiction",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -716,15 +716,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        10112,
-        608
+        3632,
+        1216
       ],
-      "id": "a3429436-4c65-4626-8341-07035be862b4",
+      "id": "f5e40bb3-b82c-4cc6-b773-fe4db906e1fa",
       "name": "6_4_supersystem_reformulation",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -739,15 +739,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        10432,
-        768
+        2688,
+        1520
       ],
-      "id": "e3df29aa-6b12-4c60-a30f-add8522195ac",
+      "id": "3ccacf44-082d-4ac8-a0e4-10420a411b1c",
       "name": "7_1_solution_control",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -762,15 +762,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        10784,
-        768
+        3040,
+        1520
       ],
-      "id": "7d289407-a6bd-4c96-ae1e-890512e004c8",
+      "id": "269ea7e9-fb47-4845-b473-294403b8d309",
       "name": "7_2_solution_evaluation",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -785,15 +785,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        11136,
-        768
+        3392,
+        1520
       ],
-      "id": "b30d19f3-0a07-4cff-83d4-e052904820c3",
+      "id": "011b26ec-5b89-4282-a665-faecb1f3472d",
       "name": "7_3_patent_novelty_verification",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -808,15 +808,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        11440,
-        768
+        3696,
+        1520
       ],
-      "id": "b7273f45-7098-49b5-bd8c-5a30b11f96f6",
+      "id": "e6233ff7-f17d-46e8-9e30-6d22bd63d4a7",
       "name": "7_4_sub_tasks_identification",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -828,10 +828,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        14784,
-        416
+        5504,
+        -96
       ],
-      "id": "6d7a39d2-8b42-4f3d-a2e2-5a8e4c75e398",
+      "id": "2806a9b5-5ad2-4827-b425-b635a6ca7b7a",
       "name": "Respond to Webhook"
     },
     {
@@ -844,15 +844,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        12272,
-        1040
+        2656,
+        1840
       ],
-      "id": "fa1460d4-2f39-406e-bdf1-14abd93ef3db",
+      "id": "e96265e5-f333-44e8-93ca-e264820c2b4a",
       "name": "Stage 4: Breakthrough Solution generation",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       },
@@ -868,15 +868,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        12560,
-        1040
+        2944,
+        1840
       ],
-      "id": "095159a6-4861-4653-bb87-c98e196b0e43",
+      "id": "6ca41768-221a-458f-8fde-4c0029056b24",
       "name": "Stage 4: Good Solution generation",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       },
@@ -892,15 +892,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        12848,
-        1040
+        3232,
+        1840
       ],
-      "id": "05cc4b65-fb70-4773-aead-044c1ff87f6e",
+      "id": "38f5605f-1240-4154-b60f-97da6e710949",
       "name": "Stage 4: Trivial Solution generation",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       },
@@ -916,14 +916,14 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        13184,
-        1040
+        3568,
+        1840
       ],
-      "id": "62925480-c5f2-4561-998d-9604699af7ea",
+      "id": "fe5f35a9-eb9a-49cd-b81b-adf941517bb8",
       "name": "Generate Patent Queries",
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -946,10 +946,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        13520,
-        1040
+        3904,
+        1840
       ],
-      "id": "0d563dd7-62ff-48d7-90da-f2f080e9d439",
+      "id": "4d0ac716-60d5-4331-8903-fae9f23da7f8",
       "name": "Search Patents By Queries Output"
     },
     {
@@ -960,10 +960,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        13728,
-        1040
+        4112,
+        1840
       ],
-      "id": "d4526297-ffac-48eb-af2c-f1e7a14f1443",
+      "id": "38dbc2c8-abcf-478b-bc5b-081f14c9d702",
       "name": "Process Patents"
     },
     {
@@ -976,15 +976,15 @@
       "type": "n8n-nodes-gigachat.gigaChat",
       "typeVersion": 1,
       "position": [
-        13920,
-        1040
+        4304,
+        1840
       ],
-      "id": "a1854ad6-59df-4743-a5b2-283e62124e9f",
+      "id": "613f244e-ef4c-4205-884e-575d04647bef",
       "name": "ARIZ-85-V Summary",
       "retryOnFail": true,
       "credentials": {
         "gigaChatApi": {
-          "id": "URKo6bFtJLlbYxH5",
+          "id": "PdEazndFNGp2rACg",
           "name": "GigaChat account"
         }
       }
@@ -1466,15 +1466,15 @@
       ]
     }
   },
-  "active": true,
+  "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "ffcf10d7-1538-4e93-bfd7-977919f87e43",
+  "versionId": "33e2911e-72bf-42c5-b676-6cbc2e9f67b5",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "1dc344b625e5d453549c8897b7820bb4ec1d778a6118b2c3dc2074e872f376b0"
+    "instanceId": "a73bb1ca61cbc25a95cd316c9ddc9ab0172dc30908c6ff8a7eeadbe99d80f4e2"
   },
-  "id": "LDonyaAQAUbmA4a2",
+  "id": "bkHYVY1FzdOZtXIf",
   "tags": []
 }

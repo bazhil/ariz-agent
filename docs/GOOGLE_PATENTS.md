@@ -2,18 +2,19 @@
 
 Инструкция: как найти патенты на [Google Patents](https://patents.google.com/), скачать выгрузку и загрузить её в векторную БД прототипа.
 
-Блок патентов **опционален**. Основной АРИЗ-чат работает без него.  
-Поиск в Qdrant — **демо**, не юридическая проверка патентной чистоты.
+Qdrant и `patent_service` входят в обычный `docker compose up -d`. Поиск в Qdrant — **демо**, не юридическая проверка патентной чистоты.
 
 ---
 
 ## 1. Поднять сервисы патентов
 
-Из корня репозитория:
+Из корня репозитория (поднимает весь стек, включая адаптер):
 
 ```bash
-docker compose --profile patents up -d
+docker compose up -d
 ```
+
+Если контейнеры ядра уже запущены, та же команда дособерёт и стартует `qdrant` и `patent_service`. Первый раз образ адаптера **собирается** (`--build` не обязателен, Compose соберёт его сам).
 
 Проверка в браузере:
 
@@ -133,9 +134,9 @@ curl "http://localhost:8000/search?q=vibration%20damping&limit=5"
 }
 ```
 
-URL внутри Docker-сети: `http://patent_service:8000/search_by_output` (уже прописан в `ariz_85_v_3.json`).
+URL внутри Docker-сети: `http://patent_service:8000/search_by_output` (уже прописан в `n8n_workflows/ariz_85_v.json`).
 
-Если профиль `patents` не запущен, соответствующие ноды workflow завершатся ошибкой сети — либо поднимите профиль, либо отключите/обойдите патентные ноды в n8n для учебных прогонов без БД.
+Если `patent_service` не запущен, соответствующие ноды workflow завершатся ошибкой сети — поднимите стек (`docker compose up -d`) или временно отключите патентные ноды в n8n.
 
 ---
 
@@ -154,13 +155,13 @@ URL внутри Docker-сети: `http://patent_service:8000/search_by_output` 
 ## 7. Остановить только патентный контур
 
 ```bash
-docker compose --profile patents stop qdrant patent_service
+docker compose stop qdrant patent_service
 ```
 
 или полный останов проекта:
 
 ```bash
-docker compose --profile patents down
+docker compose down
 ```
 
 Данные Qdrant хранятся в Docker volume `qdrant_data` и переживают `stop`; `down -v` удалит тома — используйте осторожно.

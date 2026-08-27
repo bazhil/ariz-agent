@@ -26,7 +26,7 @@ async def lifespan(app: FastAPI):
     pass
 
 
-app = FastAPI(title="Patent Qdrant Service", lifespan=lifespan)
+app = FastAPI(title="Patent Service", lifespan=lifespan)
 
 
 class EmbedTextRequest(BaseModel):

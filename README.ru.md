@@ -13,7 +13,7 @@
 ## Что умеет
 
 1. Вы описываете задачу обычным языком в чате.
-2. n8n выполняет многошаговый пайплайн **АРИЗ-85-В** (`workflows/ariz_85_v_3.json`).
+2. n8n выполняет многошаговый пайплайн **АРИЗ-85-В** (`n8n_workflows/ariz_85_v.json`).
 3. Вы получаете структурированный отчёт (постановка, ИКР, идеи решений, проверки).
 4. По желанию идеи сопоставляются с патентами, которые вы сами загрузили в Qdrant.
 
@@ -28,7 +28,7 @@
 ```text
 Пользователь → OpenWebUI (чат + Pipe)
                   → webhook n8n (шаги АРИЗ-85-В через LLM)
-                       ↘ опционально: patent_service → Qdrant
+                       ↘ patent_service → Qdrant
 ```
 
 | Сервис | Роль | URL по умолчанию |
@@ -36,8 +36,8 @@
 | OpenWebUI | Чат | http://localhost:3000 |
 | n8n | Оркестратор workflow | http://localhost:5678 |
 | PostgreSQL | БД для n8n | внутри сети Docker |
-| Qdrant *(опционально)* | Векторная БД патентов | http://localhost:6333 |
-| patent_service *(опционально)* | Загрузка CSV и поиск | http://localhost:8000 |
+| Qdrant | Векторная БД патентов | http://localhost:6333 |
+| patent_service | Загрузка CSV и поиск по патентам | http://localhost:8000 |
 
 Ссылки на официальную документацию: [docs/SERVICES.md](docs/SERVICES.md).
 
@@ -54,7 +54,7 @@
 ## Быстрый старт (основной стек)
 
 ```bash
-git clone https://github.com/<ваш-аккаунт>/ariz-agent.git
+git clone https://github.com/bazhil/ariz-agent.git
 cd ariz-agent
 cp .env.example .env
 docker compose up -d
@@ -64,11 +64,13 @@ docker compose up -d
 
 - чат: http://localhost:3000  
 - n8n: http://localhost:5678  
+- адаптер патентов: http://localhost:8000/health  
+- Qdrant: http://localhost:6333/dashboard  
 
 Дальше **один раз**:
 
-1. **n8n:** установить community-ноду **GigaChat** → Import файла `workflows/ariz_85_v_3.json` → указать credentials API → включить workflow (**Active**) → скопировать **Production Webhook URL**.
-2. **OpenWebUI:** Admin → Functions → создать **Pipe** → вставить код из `openai_functions/ariz_85_v.py` → в Valves указать `N8N_WEBHOOK_URL` → включить функцию.
+1. **n8n:** установить community-ноду **GigaChat** → Import файла `n8n_workflows/ariz_85_v.json` → указать credentials API → включить workflow (**Active**) → скопировать **Production Webhook URL**.
+2. **OpenWebUI:** Admin → Functions → создать **Pipe** → вставить код из `openwebui_functions/ariz_85_v.py` → в Valves указать `N8N_WEBHOOK_URL` → включить функцию.
 3. Новый чат → выбрать Pipe → описать техническую задачу → дождаться отчёта (может занять несколько минут).
 
 Подробно, «для людей» без программирования: [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md).
@@ -79,13 +81,9 @@ docker compose up -d
 docker compose down
 ```
 
-### Патенты (профиль `patents`)
+### Патенты
 
-```bash
-docker compose --profile patents up -d
-```
-
-Как искать и скачивать CSV в Google Patents и загрузить в векторную БД: [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md).
+Qdrant и `patent_service` входят в обычный `docker compose up -d` (первый запуск собирает образ адаптера). Как искать и скачивать CSV в Google Patents и загрузить в векторную БД: [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md).
 
 **Ollama не нужен.** OpenWebUI поднимается с `ENABLE_OLLAMA_API=false`; чат АРИЗ идёт по цепочке **Pipe → n8n → GigaChat**, без локальных моделей.
 
@@ -94,11 +92,10 @@ docker compose --profile patents up -d
 ## Структура репозитория
 
 ```text
-docker-compose.yml           # ядро + опциональные profiles
+docker-compose.yml           # весь стек, включая патентный адаптер
 .env.example
-workflows/ariz_85_v_3.json   # рабочий workflow АРИЗ-85-В
-openai_functions/ariz_85_v.py
-prompts/                     # промпты шагов (удобно читать вне JSON)
+n8n_workflows/ariz_85_v.json # рабочий workflow АРИЗ-85-В
+openwebui_functions/ariz_85_v.py
 patent_service/              # FastAPI + эмбеддинги → Qdrant (вайбкод-демо)
 patents/example.csv
 docs/

@@ -17,16 +17,12 @@
 | 1 | Компьютер Windows / macOS / Linux, ~10+ ГБ свободно | Место под Docker-образы |
 | 2 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Win/Mac) или Docker + Compose (Linux) | Запускает все сервисы одной командой |
 | 3 | Учётные данные **GigaChat API** | Модель, которая заполняет шаги АРИЗ |
-| 4 | Этот проект (ZIP с GitHub или клон репозитория) | Файлы workflow и настройки |
+| 4 | Репозиторий [ariz-agent](https://github.com/bazhil/ariz-agent.git) (клон или ZIP) | Файлы workflow и настройки |
 | 5 | Браузер (Chrome / Firefox / Edge) | Интерфейсы чата и n8n |
 
-Пока **не нужны:** Python, IDE, знание ТРИЗ «на отлично», патентная база.
+Пока **не нужны:** Python, IDE, знание ТРИЗ «на отлично». Готовую патентную выгрузку можно загрузить позже — сами сервисы Qdrant и `patent_service` поднимутся вместе с остальным стеком.
 
-Патентный поиск (Qdrant) для первого запуска **пропустите**.
-
-Полный стек с патентами позже: `docker compose --profile patents up -d` (инструкция: [GOOGLE_PATENTS.md](GOOGLE_PATENTS.md)).
-
-Описание сервисов и ссылки на документацию: [SERVICES.md](SERVICES.md).
+Как искать и загружать CSV: [GOOGLE_PATENTS.md](GOOGLE_PATENTS.md). Описание сервисов: [SERVICES.md](SERVICES.md).
 
 ---
 
@@ -48,14 +44,16 @@ docker compose version
 
 ## 2. Скачать проект
 
-**Вариант А (проще):** на странице репозитория GitHub → кнопка **Code** → **Download ZIP** → распаковать в удобную папку, например `Documents/ARIZAgent`.
+Клонируйте репозиторий [https://github.com/bazhil/ariz-agent.git](https://github.com/bazhil/ariz-agent.git).
 
-**Вариант Б:** если пользуетесь git:
+**Вариант А (рекомендуется):** если установлен git, в терминале выполните:
 
 ```bash
-git clone [URL_РЕПОЗИТОРИЯ]
-cd ARIZAgent
+git clone https://github.com/bazhil/ariz-agent.git
+cd ariz-agent
 ```
+
+**Вариант Б (без git):** на странице [репозитория](https://github.com/bazhil/ariz-agent) → кнопка **Code** → **Download ZIP** → распаковать в удобную папку. Дальше все команды выполняйте из этой папки.
 
 ---
 
@@ -82,15 +80,17 @@ cd ARIZAgent
 docker compose up -d
 ```
 
-3. Первый запуск скачивает образы — подождите. Ошибки «port is already allocated» значат, что порты 3000 или 5678 заняты другим приложением: закройте его или измените порты в `docker-compose.yml` (см. FAQ).
+3. Первый запуск скачивает образы и **собирает** `patent_service` — подождите. Ошибки «port is already allocated» значат, что порты 3000, 5678, 6333 или 8000 заняты: закройте программу или измените порты в `.env` (см. FAQ).
 4. Откройте в браузере:
 
 | Адрес | Что это |
 |-------|---------|
 | http://localhost:3000 | OpenWebUI — чат, сюда будете писать задачу |
 | http://localhost:5678 | n8n — сюда один раз импортируете алгоритм |
+| http://localhost:8000/health | patent_service — адаптер поиска по патентам |
+| http://localhost:6333/dashboard | Qdrant — векторная БД патентов |
 
-Если обе страницы открываются — шаг выполнен.
+Если чат, n8n и `/health` открываются — шаг выполнен.
 
 Остановить всё позже:
 
@@ -116,7 +116,7 @@ docker compose down
 ### 5.3. Импорт алгоритма
 
 1. В n8n: меню → **Import from File** (или **Workflow** → Import).
-2. Выберите файл: `workflows/ariz_85_v_3.json`
+2. Выберите файл: `n8n_workflows/ariz_85_v.json`
 3. Откройте импортированный workflow.
 
 ### 5.4. Ключ GigaChat
@@ -142,7 +142,7 @@ docker compose down
 1. Откройте http://localhost:3000 и создайте пользователя-администратора (первый запуск).
 2. Перейдите в **Admin Panel** → **Functions** (или **Workspace → Functions**, в зависимости от версии).
 3. **Create** → тип **Pipe** (или вставьте как Custom Function / Pipe — как в подсказке README для вашей версии OpenWebUI).
-4. Откройте на компьютере файл `openai_functions/ariz_85_v.py` в Блокноте.
+4. Откройте на компьютере файл `openwebui_functions/ariz_85_v.py` в Блокноте.
 5. Скопируйте **весь** текст файла и вставьте в редактор функции в OpenWebUI.
 6. Сохраните функцию, включите её (Enabled).
 7. В настройках функции / **Valves** найдите поле **N8N_WEBHOOK_URL** и вставьте Production URL из n8n.
@@ -160,11 +160,13 @@ docker compose down
 
 ---
 
-## 7. Патентный поиск (необязательно)
+## 7. Патентный поиск
 
-Пропустите, пока не освоите основной чат.
+Qdrant и адаптер `patent_service` уже запущены вместе с остальным стеком (`docker compose up -d`).
 
-Кратко: поднимаются сервисы Qdrant и `patent_service`; в браузере проверяете http://localhost:8000/health ; загружаете CSV выгрузки патентов способом из README. Это демо, не замена патентному поверенному.
+Проверка: http://localhost:8000/health — ожидается статус вроде `{"status":"ok","qdrant":"connected",...}`.
+
+Чтобы поиск что-то находил, загрузите CSV с [Google Patents](https://patents.google.com/) по инструкции [GOOGLE_PATENTS.md](GOOGLE_PATENTS.md). Без выгрузки сервисы живы, но коллекция пустая. Это демо, не замена патентному поверенному.
 
 ---
 
@@ -183,7 +185,7 @@ docker compose down
 Подождите 1–2 минуты после `docker compose up -d`. Проверьте, что Docker Desktop Running. Команда `docker compose ps` должна показывать сервисы `running` / `healthy`.
 
 **Порт занят**  
-Закройте программу, которая слушает 3000 или 5678, либо в `docker-compose.yml` поменяйте левую часть портов, например `"3001:8080"`, и снова `docker compose up -d`.
+Закройте программу, которая слушает 3000, 5678, 6333 или 8000, либо в `.env` поменяйте `OPENWEBUI_PORT` / `N8N_PORT` / `QDRANT_PORT` / `PATENT_SERVICE_PORT` и снова `docker compose up -d`.
 
 **n8n: ошибка в ноде GigaChat**  
 Неверные credentials или нода не установлена. Переустановите community node, заново сохраните ключ, выберите его во всех подсвеченных нодах.

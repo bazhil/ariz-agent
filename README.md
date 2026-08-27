@@ -13,7 +13,7 @@ Method source: [ARIZ-85-V (Official G.S. Altshuller Foundation)](https://altshul
 ## What you get
 
 1. Describe a technical problem in plain language in the chat.
-2. n8n runs a multi-step **ARIZ-85-V** pipeline (`workflows/ariz_85_v_3.json`).
+2. n8n runs a multi-step **ARIZ-85-V** pipeline (`n8n_workflows/ariz_85_v.json`).
 3. You receive a structured report (problem framing, IFR, solution ideas, checks).
 4. Optionally, generated ideas can be matched against patents you loaded into Qdrant.
 
@@ -26,7 +26,7 @@ Method source: [ARIZ-85-V (Official G.S. Altshuller Foundation)](https://altshul
 ```text
 User → OpenWebUI (chat + Pipe)
          → n8n webhook (ARIZ-85-V steps via LLM)
-              ↘ optional: patent_service → Qdrant
+              ↘ patent_service → Qdrant
 ```
 
 | Service | Role | Default URL |
@@ -34,8 +34,8 @@ User → OpenWebUI (chat + Pipe)
 | OpenWebUI | Chat UI | http://localhost:3000 |
 | n8n | Workflow engine | http://localhost:5678 |
 | PostgreSQL | n8n database | internal |
-| Qdrant *(optional)* | Vector DB for patents | http://localhost:6333 |
-| patent_service *(optional)* | CSV load + semantic search | http://localhost:8000 |
+| Qdrant | Vector DB for patents | http://localhost:6333 |
+| patent_service | CSV load + semantic search | http://localhost:8000 |
 
 Official documentation links: [docs/SERVICES.md](docs/SERVICES.md).
 
@@ -53,7 +53,7 @@ Official documentation links: [docs/SERVICES.md](docs/SERVICES.md).
 ## Quick start (core stack)
 
 ```bash
-git clone https://github.com/<your-account>/ariz-agent.git
+git clone https://github.com/bazhil/ariz-agent.git
 cd ariz-agent
 cp .env.example .env
 docker compose up -d
@@ -63,22 +63,20 @@ Open:
 
 - Chat: http://localhost:3000  
 - n8n: http://localhost:5678  
+- Patent adapter: http://localhost:8000/health  
+- Qdrant: http://localhost:6333/dashboard  
 
 Then (once):
 
-1. In n8n: install the **GigaChat** community node, import `workflows/ariz_85_v_3.json`, add API credentials, set workflow **Active**, copy the **Production Webhook URL**.
-2. In OpenWebUI: Admin → Functions → create a **Pipe**, paste `openai_functions/ariz_85_v.py`, set `N8N_WEBHOOK_URL` to that webhook, enable the function.
+1. In n8n: install the **GigaChat** community node, import `n8n_workflows/ariz_85_v.json`, add API credentials, set workflow **Active**, copy the **Production Webhook URL**.
+2. In OpenWebUI: Admin → Functions → create a **Pipe**, paste `openwebui_functions/ariz_85_v.py`, set `N8N_WEBHOOK_URL` to that webhook, enable the function.
 3. New chat → select the Pipe → send a technical problem → wait for the report (may take several minutes).
 
 Step-by-step screenshots-oriented guide (Russian): [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md).
 
-### Optional: patents profile
+### Patents
 
-```bash
-docker compose --profile patents up -d
-```
-
-Then follow [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md) to export CSV from Google Patents and load it into Qdrant.
+Qdrant and `patent_service` start with the regular `docker compose up -d` (first run builds the adapter image). Then follow [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md) to export CSV from Google Patents and load it into Qdrant.
 
 **Ollama is not required.** OpenWebUI runs with `ENABLE_OLLAMA_API=false`; the ARIZ chat goes through a **Pipe → n8n → GigaChat**, not through local models.
 
@@ -87,11 +85,10 @@ Then follow [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md) to export CSV from 
 ## Repository layout
 
 ```text
-docker-compose.yml          # core + optional profiles
+docker-compose.yml          # full stack, including the patent adapter
 .env.example
-workflows/ariz_85_v_3.json  # main ARIZ-85-V workflow
-openai_functions/ariz_85_v.py
-prompts/                    # readable copies of step prompts
+n8n_workflows/ariz_85_v.json  # main ARIZ-85-V workflow
+openwebui_functions/ariz_85_v.py
 patent_service/             # FastAPI + embeddings → Qdrant (vibe-coded demo)
 patents/example.csv
 docs/

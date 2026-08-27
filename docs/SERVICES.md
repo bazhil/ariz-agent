@@ -26,7 +26,7 @@
 
 ## OpenWebUI
 
-**Роль в проекте:** человеческий интерфейс чата. Сюда пользователь пишет задачу. Через **Pipe** (`openai_functions/ariz_85_v.py`) сообщение уходит в webhook n8n, ответ показывается в чате.
+**Роль в проекте:** человеческий интерфейс чата. Сюда пользователь пишет задачу. Через **Pipe** (`openwebui_functions/ariz_85_v.py`) сообщение уходит в webhook n8n, ответ показывается в чате.
 
 | | |
 |--|--|
@@ -42,7 +42,7 @@
 
 ## n8n
 
-**Роль в проекте:** оркестратор шагов АРИЗ-85-В. Импортируется workflow `workflows/ariz_85_v_3.json` (webhook → цепочка LLM-нод → опциональный поиск патентов → summary → ответ в webhook).
+**Роль в проекте:** оркестратор шагов АРИЗ-85-В. Импортируется workflow `n8n_workflows/ariz_85_v.json` (webhook → цепочка LLM-нод → опциональный поиск патентов → summary → ответ в webhook).
 
 | | |
 |--|--|
@@ -73,7 +73,7 @@
 
 ## Qdrant
 
-**Роль в проекте:** векторная база для семантического поиска по загруженным фрагментам патентных описаний (профиль `patents`).
+**Роль в проекте:** векторная база для семантического поиска по загруженным фрагментам патентных описаний.
 
 | | |
 |--|--|
@@ -137,12 +137,10 @@ Open WebUI исторически часто ставят вместе с Ollama
 |--|--|
 | Docker Docs | https://docs.docker.com/ |
 | Compose V2 | https://docs.docker.com/compose/ |
-| Profiles | https://docs.docker.com/compose/how-tos/profiles/ |
-
 Примеры команд проекта:
 
 ```bash
-docker compose --profile patents up -d
+docker compose up -d
 docker compose ps
 docker compose down
 ```
