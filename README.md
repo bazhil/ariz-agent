@@ -2,7 +2,7 @@
 
 Open-source prototype: run a technical / inventive problem through **ARIZ-85-V** using a chat UI (**OpenWebUI**), an orchestration workflow (**n8n**), an LLM (e.g. **GigaChat**), and optionally a patent search demo (**Qdrant** + small FastAPI service).
 
-> **Russian docs:** [README.ru.md](README.ru.md) · **Quick start (RU):** [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md) · **Patents:** [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md) · **Services:** [docs/SERVICES.md](docs/SERVICES.md)
+> **Russian docs:** [README.ru.md](README.ru.md) · **Setup (Linux / Windows / macOS):** [docs/SETUP.md](docs/SETUP.md) · **Quick start (RU):** [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md) · **Patents:** [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md) · **Services:** [docs/SERVICES.md](docs/SERVICES.md)
 
 This is a **prototype for learning and experiments**, not a commercial TRIZ expert system and not a substitute for a patent attorney.
 
@@ -72,7 +72,7 @@ Then (once):
 2. In OpenWebUI: Admin → Functions → create a **Pipe**, paste `openwebui_functions/ariz_85_v.py`, set `N8N_WEBHOOK_URL` to that webhook, enable the function.
 3. New chat → select the Pipe → send a technical problem → wait for the report (may take several minutes).
 
-Step-by-step screenshots-oriented guide (Russian): [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md).
+Screenshot walkthroughs: [docs/SETUP.md](docs/SETUP.md) (Linux, Windows, macOS). Shorter Russian guide without screenshots: [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md).
 
 ### Patents
 

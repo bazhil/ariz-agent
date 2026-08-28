@@ -1,6 +1,6 @@
 # Google Patents → CSV → Qdrant (patent_service)
 
-Инструкция: как найти патенты на [Google Patents](https://patents.google.com/), скачать выгрузку и загрузить её в векторную БД прототипа.
+Инструкция: как найти патенты на [Google Patents](https://patents.google.com/), скачать выгрузку и загрузить её в векторную БД прототипа. Скриншоты загрузки: [SETUP.md](SETUP.md).
 
 Qdrant и `patent_service` входят в обычный `docker compose up -d`. Поиск в Qdrant — **демо**, не юридическая проверка патентной чистоты.
 

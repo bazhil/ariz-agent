@@ -2,7 +2,7 @@
 
 Открытый прототип: прогон технической / изобретательской задачи через **АРИЗ-85-В** в чате (**OpenWebUI**), оркестрация в **n8n**, LLM (например **GigaChat**), опционально поиск по патентам (**Qdrant** + небольшой FastAPI-сервис).
 
-> **English:** [README.md](README.md) · **Быстрый старт:** [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md) · **Патенты:** [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md) · **Микросервисы:** [docs/SERVICES.md](docs/SERVICES.md)
+> **English:** [README.md](README.md) · **Настройка (Linux / Windows / macOS):** [docs/SETUP.md](docs/SETUP.md) · **Быстрый старт:** [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md) · **Патенты:** [docs/GOOGLE_PATENTS.md](docs/GOOGLE_PATENTS.md) · **Микросервисы:** [docs/SERVICES.md](docs/SERVICES.md)
 
 Это **учебный и экспериментальный прототип**, не коммерческая экспертиза по ТРИЗ и не замена патентному поверенному.
 
@@ -73,7 +73,7 @@ docker compose up -d
 2. **OpenWebUI:** Admin → Functions → создать **Pipe** → вставить код из `openwebui_functions/ariz_85_v.py` → в Valves указать `N8N_WEBHOOK_URL` → включить функцию.
 3. Новый чат → выбрать Pipe → описать техническую задачу → дождаться отчёта (может занять несколько минут).
 
-Подробно, «для людей» без программирования: [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md).
+Пошагово со скриншотами: [docs/SETUP.md](docs/SETUP.md) (Linux, Windows, macOS). Краткая версия без скриншотов: [docs/QUICKSTART_ru.md](docs/QUICKSTART_ru.md).
 
 ### Остановить
 

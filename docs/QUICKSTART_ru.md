@@ -1,6 +1,6 @@
 # Быстрый старт ARIZAgent (без навыков программирования)
 
-См. также: [README.ru.md](../README.ru.md) · [микросервисы](SERVICES.md) · [патенты](GOOGLE_PATENTS.md)
+См. также: [README.ru.md](../README.ru.md) · **[настройка: Linux, Windows, macOS](SETUP.md)** · [микросервисы](SERVICES.md) · [патенты](GOOGLE_PATENTS.md)
 
 Инструкция рассчитана на человека, который умеет устанавливать программы и копировать текст. Писать код не нужно.
 
