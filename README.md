@@ -98,12 +98,6 @@ docs/
 
 ---
 
-## Feedback / research questionnaire
-
-Russian questionnaire ready for Google Forms (TAM-oriented, usable for product feedback and pilot studies): [docs/questionnaire_ru.md](docs/questionnaire_ru.md).
-
----
-
 ## Disclaimer
 
 - ARIZ methodology belongs to the legacy of G.S. Altshuller / the Official Foundation; this repo ships a **software wrapper and prompts**, with a link to the original text.
