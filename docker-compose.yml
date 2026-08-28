@@ -42,6 +42,7 @@ services:
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE:-UTC}
       - N8N_BASIC_AUTH_ACTIVE=false
       - NODE_ENV=production
+      - GIGACHAT_TIMEOUT=${GIGACHAT_TIMEOUT:-300}
     volumes:
       - n8n_data:/home/node/.n8n
     depends_on:
