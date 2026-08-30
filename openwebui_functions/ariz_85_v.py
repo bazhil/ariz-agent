@@ -10,10 +10,10 @@ class Pipe:
     class Valves(BaseModel):
         N8N_WEBHOOK_URL: str = Field(
             # ariz_85_v webhook
-            default="http://n8n:5678/webhook-test/aa3eb1a4-66a4-4f63-9354-065d103e0a0f",
+            default="http://n8n:5678/webhook/aa3eb1a4-66a4-4f63-9354-065d103e0a0f",
             description="URL вебхука n8n",
         )
-        TIMEOUT: int = Field(default=120, description="Таймаут запроса в секундах")
+        TIMEOUT: int = Field(default=1200, description="Таймаут запроса в секундах")
 
     def __init__(self):
         self.valves = self.Valves()
